@@ -171,6 +171,8 @@ void FindBlock_Processor::onLineSegmentsEstimated()
 		//Compute servo parameters
 		if(active_blocks.size() > 0) {
 
+			double maxPixels = std::max(si.image.size().width, si.image.size().height);
+
 			//Compute average of segment rotations
 			double sumg = 0.0, im_g = 0.0;
 			for(size_t z = 0; z < ys.size(); ++z) {
@@ -199,11 +201,11 @@ void FindBlock_Processor::onLineSegmentsEstimated()
 				im_x = pabs_v[0].x - pos_centr->x;
 				im_y = pabs_v[0].y - pos_centr->y;
 			}
-			cout << im_x << ", " << im_y << endl;
+			cout << im_x/maxPixels << ", " << im_y/maxPixels << endl;
 
 			//Set servo parameters
-			imagePosition.elements[0] = im_x;
-			imagePosition.elements[1] = im_y;
+			imagePosition.elements[0] = im_x/maxPixels;
+			imagePosition.elements[1] = im_y/maxPixels;
 			imagePosition.elements[2] = 0;
 			imagePosition.elements[3] = im_g;
 
