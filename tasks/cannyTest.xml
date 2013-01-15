@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Task>
+
+<!-- List of components -->
+<Components>
+
+		<Keyboard type="Keyboard" thread="KeyboardExecutor" group="s1">
+			<keys>n</keys>
+		</Keyboard>
+		
+        <ImageSource type="Sequence" thread="ProcessingThread" group="s1">
+			<directory>/home/spiatek/workspace/discode/DCL/DCL_ObjectsRecognition/TestData/SP/white</directory>
+			<triggered>true</triggered>
+			<sort>true</sort>
+		</ImageSource>
+
+		<CannyEdgesDetector type="CannyFilter" thread="ProcessingThread" group="s1">
+			<threshold1>100</threshold1>
+			<threshold2>300</threshold2>
+		</CannyEdgesDetector>
+
+		<LineEstimator type="HoughTransform" thread="ProcessingThread" group="s1">
+			<threshold>30</threshold>
+			<rho>0.7</rho>
+			<theta>18</theta>
+			<srn>0</srn>
+			<stn>0</stn>
+		</LineEstimator>
+
+	<MorphClose type="CvMorphology" thread="ProcessingThread" group="s1">
+		<type>MORPH_RECT</type>
+		<iterations>3</iterations>
+	</MorphClose>
+
+	<MorphOpen type="CvMorphology" thread="ProcessingThread" group="s1">
+		<type>MORPH_CLOSE</type>
+		<iterations>0</iterations>
+	</MorphOpen>
+
+	<PreviewWindow type="CvWindow" thread="PreviewExecutor" group="s1">
+		<title>Preview</title>
+	</PreviewWindow>
+
+<!--		<CspObjectRecognize type="CspObjectRecognize" thread="ProcessingThread" group="s1">
+			<modelsFilename>/home/spiatek/workspace/discode/DCL/DCL_ObjectsRecognition/TestData/MB/primitives.xml</modelsFilename>		
+		</CspObjectRecognize>
+-->
+</Components>
+
+		
+<!-- Threads of execution -->
+<Executors>
+
+	<ProcessingThread type="continuous">
+		<main_component>ImageSource</main_component>
+	</ProcessingThread>
+
+		<KeyboardExecutor type="continuous">
+			<main_component>Keyboard</main_component>
+		</KeyboardExecutor>
+	
+	<PreviewExecutor type="periodic">
+		<main_component>PreviewWindow</main_component>
+		<interval>0.001</interval>       
+	</PreviewExecutor>
+
+</Executors>
+
+<!-- Event connections -->
+<Events>
+	<Event source="Keyboard.n_Pressed" destination="ImageSource.onTrigger"/>
+	<Event source="ImageSource.newImage"		 destination="MorphClose.onNewImage"/>
+	<Event source="MorphClose.newImage"			destination="MorphOpen.onNewImage"/>
+	<Event source="MorphOpen.newImage"destination="CannyEdgesDetector.onNewImage"/>
+	<Event source="CannyEdgesDetector.edgesFound"	destination="LineEstimator.onNewImage"/>	
+<!--	<Event source="MorphOpen.newImage"			destination="PreviewWindow.onNewImage"/>-->
+	<Event source="LineEstimator.linesFound"		destination="PreviewWindow.onNewImage"/>
+	<!--<Event source="ImageSource.newImage"		 destination="PreviewWindow.onNewImage"/>
+	<Event source="CannyEdgesDetector.edgesFound"	destination="PreviewWindow.onNewImage"/>-->
+<!--	<Event source="CspObjectRecognize.recognized" destination="PreviewWindow.onNewImage" />-->
+	
+</Events>
+
+
+<!-- Data stream assignments -->
+<DataStreams>
+	
+	<ImageSource>
+		<out_img type="out" group="OriginalImage"/>
+	</ImageSource>
+
+	<LineEstimator>
+		<in_img type="in" group="EdgesDetected"/>
+		<out_lines type="out" group="LinesEstimated"/>
+	</LineEstimator>
+
+	<MorphClose>
+		<in_img type="in" group="OriginalImage"/>
+		<out_img type="out" group="MorphCloseImage"/>
+	</MorphClose>
+
+	<MorphOpen>
+		<in_img type="in" group="MorphCloseImage"/>
+		<out_img type="out" group="MorphOpenImage"/>
+	</MorphOpen>
+
+	<CannyEdgesDetector>
+		<in_img type="in" group="MorphOpenImage"/>
+		<out_edges type="out" group="EdgesDetected"/>
+	</CannyEdgesDetector>	
+		
+	<PreviewWindow>
+	<!--	<in_img type="in" group="EdgesDetected"/>-->
+		<in_img type="in" group="LinesEstimated"/>
+	<!--	<in_img type="in" group="OriginalImage"/>-->
+	<!--	<in_draw type="in" group="RecognizedDC"/>-->
+	</PreviewWindow>
+<!--
+		<CspObjectRecognize>
+			<in_segmentedImage type="in" group="LineSegmentsEstimated"/>
+			<out_recognizedDrawableContainer type="out" group="RecognizedDC"/>
+		</CspObjectRecognize>
+-->
+</DataStreams>
+</Task>
