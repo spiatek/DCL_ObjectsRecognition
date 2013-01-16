@@ -81,7 +81,7 @@ private:
 	Base::DataStreamIn <Types::Segmentation::SegmentedImage> in_redSegments;
 	Base::DataStreamIn <Types::Segmentation::SegmentedImage> in_greenSegments;
 	Base::DataStreamIn <Types::Segmentation::SegmentedImage> in_yellowSegments;
-	Base::DataStreamIn <cv::Vec4i> in_linesVector;
+	Base::DataStreamIn < vector<cv::Vec4i> > in_linesVector;
 
 	/**
 	 * Event handler for segmented image.
@@ -100,14 +100,16 @@ private:
 	/**
 	 * Detected contours.
 	 */
-	//Base::DataStreamOut <Types::DrawableContainer> out_contours;
+	Base::DataStreamOut <Types::DrawableContainer> out_contours;
 
-	Types::Segmentation::SegmentedImage blue_si;
-	Types::Segmentation::SegmentedImage red_si;
-	Types::Segmentation::SegmentedImage green_si;
-	Types::Segmentation::SegmentedImage yellow_si;
+	Types::Segmentation::SegmentedImage blue_si;		bool isBlue;
+	Types::Segmentation::SegmentedImage red_si;			bool isRed;
+	Types::Segmentation::SegmentedImage green_si;		bool isGreen;
+	Types::Segmentation::SegmentedImage yellow_si;		bool isYellow;
 
-	/**
+	vector<cv::Vec4i> lines;							bool isLines;
+														bool isReady;
+		/**
 	 * Edges detected event.
 	 */
 	Base::Event* cspBlocksReady;
