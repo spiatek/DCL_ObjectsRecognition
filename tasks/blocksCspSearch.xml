@@ -1,0 +1,609 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Task>
+
+<!-- List of components -->
+<Components>
+
+	<Keyboard type="Keyboard" thread="KeyboardExecutor" group="s1">
+		<keys>n</keys>
+	</Keyboard>
+		
+	<ImageSource type="Sequence" thread="ProcessingThread" group="s1">
+		<directory>/home/spiatek/workspace/discode/DCL/DCL_ObjectsRecognition/TestData/SP</directory>
+		<triggered>true</triggered>
+		<sort>true</sort>
+	</ImageSource>
+
+	<Erode type="CvMorphology" thread="ProcessingThread" group="s1">
+		<type>MORPH_RECT</type>
+		<iterations>3</iterations>
+	</Erode>
+
+	<CannyEdgesDetector type="CannyFilter" thread="ProcessingThread" group="s1">
+		<threshold1>100</threshold1>
+		<threshold2>300</threshold2>
+	</CannyEdgesDetector>
+
+	<LineEstimator type="HoughTransform" thread="ProcessingThread" group="s1">
+		<type>1</type>
+		<threshold>30</threshold>
+		<rho>0.7</rho>
+		<theta>5</theta>
+		<srn>20</srn>
+		<stn>10</stn>
+	</LineEstimator>
+
+<!--	
+	<ImageSource type="Movie" thread="ProcessingThread" group="s1">
+		<filename>/home/spiatek/workspace/DisCODe/doc/movies/mov2.avi</filename>
+	</ImageSource>
+
+	<NewestImage type="NewestImage" thread="ProcessingThread" group="s1">
+	</NewestImage>
+-->
+	<ColorConvertion type="CvColorConv" thread="ProcessingThread" group="s1">
+		<type>RGB2HSV</type>
+	</ColorConvertion>
+
+	<BlueColorExtractor type="SetHSV" thread="ProcessingThread" group="s1">
+		<terminationOption>0</terminationOption>
+		<timeout>150</timeout>
+		<blue>
+			[3,2](
+				(0, 40),
+				(20, 255),
+				(40, 255)
+			)		
+		</blue>
+		<red>
+			[3,2](
+				(0, 40),
+				(20, 255),
+				(40, 255)
+			)		
+		</red>
+		<green>
+			[3,2](
+				(0, 40),
+				(20, 255),
+				(40, 255)
+			)		
+		</green>
+		<yellow>
+			[3,2](
+				(0, 40),
+				(20, 255),
+				(40, 255)
+			)		
+		</yellow>
+		<board>
+			[3,2](
+				(40, 170),
+				(220, 255),
+				(200, 255)
+			)				
+		</board>
+		<other>
+			[3,2](
+				(0, 40),
+				(20, 255),
+				(40, 255)
+			)		
+		</other>
+	</BlueColorExtractor>
+
+	<RedColorExtractor type="SetHSV" thread="ProcessingThread" group="s1">
+		<terminationOption>0</terminationOption>
+		<timeout>150</timeout>
+		<blue>
+			[3,2](
+				(0, 40),
+				(20, 255),
+				(40, 255)
+			)		
+		</blue>
+		<red>
+			[3,2](
+				(0, 40),
+				(20, 255),
+				(40, 255)
+			)		
+		</red>
+		<green>
+			[3,2](
+				(0, 40),
+				(20, 255),
+				(40, 255)
+			)		
+		</green>
+		<yellow>
+			[3,2](
+				(0, 40),
+				(20, 255),
+				(40, 255)
+			)		
+		</yellow>
+		<board>
+			[3,2](
+				(40, 170),
+				(220, 255),
+				(200, 255)
+			)				
+		</board>
+		<other>
+			[3,2](
+				(120, 180),
+				(130, 255),
+				(45, 255)
+			)
+		</other>
+	</RedColorExtractor>
+
+	<GreenColorExtractor type="SetHSV" thread="ProcessingThread" group="s1">
+		<terminationOption>0</terminationOption>
+		<timeout>150</timeout>
+		<blue>
+			[3,2](
+				(0, 40),
+				(20, 255),
+				(40, 255)
+			)		
+		</blue>
+		<red>
+			[3,2](
+				(0, 40),
+				(20, 255),
+				(40, 255)
+			)		
+		</red>
+		<green>
+			[3,2](
+				(0, 40),
+				(20, 255),
+				(40, 255)
+			)		
+		</green>
+		<yellow>
+			[3,2](
+				(0, 40),
+				(20, 255),
+				(40, 255)
+			)		
+		</yellow>
+		<board>
+			[3,2](
+				(40, 170),
+				(220, 255),
+				(200, 255)
+			)				
+		</board>
+		<other>
+			[3,2](
+				(45, 62),
+				(130, 255),
+				(30, 255)
+			)		
+		</other>
+	</GreenColorExtractor>
+
+	<YellowColorExtractor type="SetHSV" thread="ProcessingThread" group="s1">
+		<terminationOption>0</terminationOption>
+		<timeout>150</timeout>
+		<blue>
+			[3,2](
+				(0, 40),
+				(20, 255),
+				(40, 255)
+			)		
+		</blue>
+		<red>
+			[3,2](
+				(0, 40),
+				(20, 255),
+				(40, 255)
+			)		
+		</red>
+		<green>
+			[3,2](
+				(0, 40),
+				(20, 255),
+				(40, 255)
+			)		
+		</green>
+		<yellow>
+			[3,2](
+				(0, 40),
+				(20, 255),
+				(40, 255)
+			)		
+		</yellow>
+		<board>
+			[3,2](
+				(40, 170),
+				(220, 255),
+				(200, 255)
+			)				
+		</board>
+		<other>
+			[3,2](
+				(40, 170),
+				(50, 255),
+				(200, 255)
+			)				
+		</other>
+	</YellowColorExtractor>
+
+	<BlueMorphClose type="CvMorphology" thread="ProcessingThread" group="s1">
+		<type>MORPH_CLOSE</type>
+		<iterations>3</iterations>
+	</BlueMorphClose>
+
+	<BlueMorphOpen type="CvMorphology" thread="ProcessingThread" group="s1">
+		<type>MORPH_OPEN</type>
+		<iterations>3</iterations>
+	</BlueMorphOpen>
+
+	<RedMorphClose type="CvMorphology" thread="ProcessingThread" group="s1">
+		<type>MORPH_CLOSE</type>
+		<iterations>3</iterations>
+	</RedMorphClose>
+
+	<RedMorphOpen type="CvMorphology" thread="ProcessingThread" group="s1">
+		<type>MORPH_OPEN</type>
+		<iterations>3</iterations>
+	</RedMorphOpen>
+
+	<GreenMorphClose type="CvMorphology" thread="ProcessingThread" group="s1">
+		<type>MORPH_CLOSE</type>
+		<iterations>3</iterations>
+	</GreenMorphClose>
+
+	<GreenMorphOpen type="CvMorphology" thread="ProcessingThread" group="s1">
+		<type>MORPH_OPEN</type>
+		<iterations>3</iterations>
+	</GreenMorphOpen>
+
+	<YellowMorphClose type="CvMorphology" thread="ProcessingThread" group="s1">
+		<type>MORPH_CLOSE</type>
+		<iterations>3</iterations>
+	</YellowMorphClose>
+
+	<YellowMorphOpen type="CvMorphology" thread="ProcessingThread" group="s1">
+		<type>MORPH_OPEN</type>
+		<iterations>3</iterations>
+	</YellowMorphOpen>
+
+	<BlueSegmentation type="GrayImageSegmentation" thread="ProcessingThread" group="s1">
+		<minSegmentArea>400</minSegmentArea>
+		<minVariance>5e-3</minVariance>
+	</BlueSegmentation>
+
+	<RedSegmentation type="GrayImageSegmentation" thread="ProcessingThread" group="s1">
+		<minSegmentArea>400</minSegmentArea>
+		<minVariance>5e-3</minVariance>
+	</RedSegmentation>
+
+	<GreenSegmentation type="GrayImageSegmentation" thread="ProcessingThread" group="s1">
+		<minSegmentArea>400</minSegmentArea>
+		<minVariance>5e-3</minVariance>
+	</GreenSegmentation>
+
+	<YellowSegmentation type="GrayImageSegmentation" thread="ProcessingThread" group="s1">
+		<minSegmentArea>400</minSegmentArea>
+		<minVariance>5e-3</minVariance>
+	</YellowSegmentation>
+
+	<BlueEdgeDetection type="EdgeDetectorForSegmentedImage" thread="ProcessingThread" group="s1">
+	</BlueEdgeDetection>
+
+	<RedEdgeDetection type="EdgeDetectorForSegmentedImage" thread="ProcessingThread" group="s1">
+	</RedEdgeDetection>
+
+	<GreenEdgeDetection type="EdgeDetectorForSegmentedImage" thread="ProcessingThread" group="s1">
+	</GreenEdgeDetection>
+
+	<YellowEdgeDetection type="EdgeDetectorForSegmentedImage" thread="ProcessingThread" group="s1">
+	</YellowEdgeDetection>
+
+	<RedLineSegments type="LineSegments" thread="ProcessingThread" group="s1">
+	</RedLineSegments>
+
+	<BlueLineSegments type="LineSegments" thread="ProcessingThread" group="s1">
+	</BlueLineSegments>
+
+	<GreenLineSegments type="LineSegments" thread="ProcessingThread" group="s1">
+	</GreenLineSegments>
+
+	<YellowLineSegments type="LineSegments" thread="ProcessingThread" group="s1">
+	</YellowLineSegments>
+
+		<PreviewWindow type="CvWindow" thread="PreviewExecutor" group="s1">
+			<title>Preview </title>
+			<count>2</count>
+		</PreviewWindow>
+		
+	<CspBlocksPreprocessor type="CspBlocksPreprocessor" thread="ProcessingThread" group="s1">
+	</CspBlocksPreprocessor>
+
+<!--
+		<CspObjectRecognize type="CspObjectRecognize" thread="ProcessingThread" group="s1">
+			<modelsFilename>/home/spiatek/workspace/discode/DCL/DCL_ObjectsRecognition/TestData/MB/primitives.xml</modelsFilename>		
+		</CspObjectRecognize>
+-->
+</Components>
+
+
+<!-- Threads of execution -->
+<Executors>
+
+	<ProcessingThread type="continuous">
+		<main_component>ImageSource</main_component>
+	</ProcessingThread>
+
+		<KeyboardExecutor type="continuous">
+			<main_component>Keyboard</main_component>
+		</KeyboardExecutor>
+	
+	<PreviewExecutor type="periodic">
+		<main_component>PreviewWindow</main_component>
+		<interval>0.1</interval>       
+	</PreviewExecutor>
+
+
+</Executors>
+
+<!-- Event connections -->
+<Events>
+	<Event source="Keyboard.n_Pressed" destination="ImageSource.onTrigger"/>
+
+	<Event source="ImageSource.newImage"			destination="Erosion.onNewImage"/>
+	<Event source="Erosion.newImage"				destination="MorphOpen.onNewImage"/>
+	<Event source="MorphOpen.newImage"				destination="CannyEdgesDetector.onNewImage"/>
+	<Event source="CannyEdgesDetector.edgesFound"	destination="LineEstimator.onNewImage"/>
+	<Event source="LineEstimator.linesFound"		destination="CspBlocksPreprocessor.onLinesEstimated"/>
+
+	<Event source="ImageSource.newImage"		 destination="ColorConvertion.onNewImage"/>
+	<Event source="ColorConvertion.newImage"	destination="BlueColorExtractor.onNewImage"/>
+	<Event source="ColorConvertion.newImage"	destination="RedColorExtractor.onNewImage"/>
+	<Event source="ColorConvertion.newImage"	destination="GreenColorExtractor.onNewImage"/>
+	<Event source="ColorConvertion.newImage"	destination="YellowColorExtractor.onNewImage"/>
+	<Event source="BlueColorExtractor.newImage"		destination="BlueMorphClose.onNewImage"/>
+	<Event source="RedColorExtractor.newImage"		destination="RedMorphClose.onNewImage"/>
+	<Event source="GreenColorExtractor.newImage"	destination="GreenMorphClose.onNewImage"/>
+	<Event source="YellowColorExtractor.newImage"	destination="YellowMorphClose.onNewImage"/>
+	<Event source="BlueMorphClose.newImage"		destination="BlueMorphOpen.onNewImage"/>
+	<Event source="RedMorphClose.newImage"		destination="RedMorphOpen.onNewImage"/>
+	<Event source="GreenMorphClose.newImage"	destination="GreenMorphOpen.onNewImage"/>
+	<Event source="YellowMorphClose.newImage"	destination="YellowMorphOpen.onNewImage"/>
+	<Event source="BlueMorphOpen.newImage"		destination="BlueSegmentation.onNewImage"/>
+	<Event source="RedMorphOpen.newImage"		destination="RedSegmentation.onNewImage"/>
+	<Event source="GreenMorphOpen.newImage"		destination="GreenSegmentation.onNewImage"/>
+	<Event source="YellowMorphOpen.newImage"	destination="YellowSegmentation.onNewImage"/>
+	<Event source="BlueSegmentation.segmented"		destination="BlueEdgeDetection.onSegmented"/>
+	<Event source="RedSegmentation.segmented"		destination="RedEdgeDetection.onSegmented"/>
+	<Event source="GreenSegmentation.segmented"		destination="GreenEdgeDetection.onSegmented"/>
+	<Event source="YellowSegmentation.segmented"	destination="YellowEdgeDetection.onSegmented"/>
+	<Event source="BlueEdgeDetection.edgesDetected"		destination="BlueLineSegments.onEdgesDetected"/>
+	<Event source="RedEdgeDetection.edgesDetected"		destination="RedLineSegments.onEdgesDetected"/>
+	<Event source="GreenEdgeDetection.edgesDetected"	destination="GreenLineSegments.onEdgesDetected"/>
+	<Event source="YellowEdgeDetection.edgesDetected"	destination="YellowLineSegments.onEdgesDetected"/>
+	
+	<Event source="BlueLineSegments.lineSegmentsEstimated"	destination="CspBlocksPreprocessor.onLineBlueSegmentsEstimated"/>
+	<Event source="RedLineSegments.lineSegmentsEstimated"	destination="CspBlocksPreprocessor.onLineRedSegmentsEstimated"/>
+	<Event source="GreenLineSegments.lineSegmentsEstimated"	destination="CspBlocksPreprocessor.onLineGreenSegmentsEstimated"/>
+	<Event source="YellowLineSegments.lineSegmentsEstimated"	destination="CspBlocksPreprocessor.onLineYellowSegmentsEstimated"/>
+	
+	<Event source="BlueLineSegments.lineSegmentsEstimated"	destination="PreviewWindow.onNewImage1"/>
+<!--	<Event source="RedLineSegments.lineSegmentsEstimated"	destination="PreviewWindow.onNewImage1"/>-->
+<!--	<Event source="GreenLineSegments.lineSegmentsEstimated"	destination="PreviewWindow.onNewImage1"/>-->
+	<Event source="YellowLineSegments.lineSegmentsEstimated"	destination="PreviewWindow.onNewImage0"/>
+
+	<Event source="ImageSource.newImage"		destination="PreviewWindow.onNewImage0"/>
+	<Event source="ImageSource.newImage"		destination="PreviewWindow.onNewImage1"/>
+
+<!--	<Event source="BlueLineSegments.lineSegmentsEstimated" destination="CspObjectRecognize.onSegmentedImage"/>-->
+
+<!--	<Event source="CspObjectRecognize.recognized" destination="PreviewWindow.onNewImage" />	-->
+	
+</Events>
+
+
+<!-- Data stream assignments -->
+<DataStreams>
+	
+	<ImageSource>
+		<out_img type="out" group="OriginalImage"/>
+	</ImageSource>
+<!--	
+	<NewestImage>
+		<in_img type="in" group="OriginalImage"/>
+		<out_img type="out" group="NewestImage"/>
+	</NewestImage>
+-->
+
+	<Erode>
+		<in_img type="in" group="OriginalImage"/>
+		<out_img type="out" group="ErodedImage"/>
+	</Erode>
+
+	<CannyEdgesDetector>
+		<in_img type="in" group="ErodedImage"/>
+		<out_edges type="out" group="EdgesDetected"/>
+	</CannyEdgesDetector>	
+
+	<LineEstimator>
+		<in_img type="in" group="EdgesDetected"/>
+		<out_lines type="out" group="LinesEstimated"/>
+	</LineEstimator>
+
+	<ColorConvertion>
+		<in_img type="in" group="OriginalImage"/>
+		<out_img type="out" group="ConvertedImage"/>
+	</ColorConvertion>
+
+	<BlueColorExtractor>
+		<in_img type="in" group="ConvertedImage"/>
+		<out_threshold type="out" group="BlueThresholdedImage"/>
+		<out_hue type="out" group="BlueHueImage"/>
+		<out_saturation type="out" group="BlueSaturationImage"/>
+		<out_value type="out" group="BlueValueImage"/>
+	</BlueColorExtractor>
+    
+	<RedColorExtractor>
+		<in_img type="in" group="ConvertedImage"/>
+		<out_threshold type="out" group="RedThresholdedImage"/>
+		<out_hue type="out" group="RedHueImage"/>
+		<out_saturation type="out" group="RedSaturationImage"/>
+		<out_value type="out" group="RedValueImage"/>
+	</RedColorExtractor>
+    
+	<GreenColorExtractor>
+		<in_img type="in" group="ConvertedImage"/>
+		<out_threshold type="out" group="GreenThresholdedImage"/>
+		<out_hue type="out" group="GreenHueImage"/>
+		<out_saturation type="out" group="GreenSaturationImage"/>
+		<out_value type="out" group="GreenValueImage"/>
+	</GreenColorExtractor>
+    
+	<YellowColorExtractor>
+		<in_img type="in" group="ConvertedImage"/>
+		<out_threshold type="out" group="YellowThresholdedImage"/>
+		<out_hue type="out" group="YellowHueImage"/>
+		<out_saturation type="out" group="YellowSaturationImage"/>
+		<out_value type="out" group="YellowValueImage"/>
+	</YellowColorExtractor>
+    
+	<BlueMorphClose>
+		<in_img type="in" group="BlueThresholdedImage"/>
+		<out_img type="out" group="BlueMorphCloseImage"/>
+	</BlueMorphClose>
+
+	<RedMorphClose>
+		<in_img type="in" group="RedThresholdedImage"/>
+		<out_img type="out" group="RedMorphCloseImage"/>
+	</RedMorphClose>
+
+	<GreenMorphClose>
+		<in_img type="in" group="GreenThresholdedImage"/>
+		<out_img type="out" group="GreenMorphCloseImage"/>
+	</GreenMorphClose>
+
+	<YellowMorphClose>
+		<in_img type="in" group="YellowThresholdedImage"/>
+		<out_img type="out" group="YellowMorphCloseImage"/>
+	</YellowMorphClose>
+
+	<BlueMorphOpen>
+		<in_img type="in" group="BlueMorphCloseImage"/>
+		<out_img type="out" group="BlueMorphOpenImage"/>
+	</BlueMorphOpen>
+	
+	<RedMorphOpen>
+		<in_img type="in" group="RedMorphCloseImage"/>
+		<out_img type="out" group="RedMorphOpenImage"/>
+	</RedMorphOpen>
+	
+	<GreenMorphOpen>
+		<in_img type="in" group="GreenMorphCloseImage"/>
+		<out_img type="out" group="GreenMorphOpenImage"/>
+	</GreenMorphOpen>
+	
+	<YellowMorphOpen>
+		<in_img type="in" group="YellowMorphCloseImage"/>
+		<out_img type="out" group="YellowMorphOpenImage"/>
+	</YellowMorphOpen>
+	
+	<BlueSegmentation>
+		<in_img type="in" group="BlueMorphOpenImage"/>
+		<out_segmented type="out" group="BlueSegmentedImage"/>
+	</BlueSegmentation>
+
+	<RedSegmentation>
+		<in_img type="in" group="RedMorphOpenImage"/>
+		<out_segmented type="out" group="RedSegmentedImage"/>
+	</RedSegmentation>
+
+	<GreenSegmentation>
+		<in_img type="in" group="GreenMorphOpenImage"/>
+		<out_segmented type="out" group="GreenSegmentedImage"/>
+	</GreenSegmentation>
+
+	<YellowSegmentation>
+		<in_img type="in" group="YellowMorphOpenImage"/>
+		<out_segmented type="out" group="YellowSegmentedImage"/>
+	</YellowSegmentation>
+
+	<BlueEdgeDetection>
+		<in_segmented type="in" group="BlueSegmentedImage"/>
+		<out_edgesDetected type="out" group="BlueEdgesDetected"/>
+		<out_contours type="out" group="BlueDrawLines"/>
+	</BlueEdgeDetection>
+
+	<RedEdgeDetection>
+		<in_segmented type="in" group="RedSegmentedImage"/>
+		<out_edgesDetected type="out" group="RedEdgesDetected"/>
+		<out_contours type="out" group="RedDrawLines"/>
+	</RedEdgeDetection>
+
+	<GreenEdgeDetection>
+		<in_segmented type="in" group="GreenSegmentedImage"/>
+		<out_edgesDetected type="out" group="GreenEdgesDetected"/>
+		<out_contours type="out" group="GreenDrawLines"/>
+	</GreenEdgeDetection>
+
+	<YellowEdgeDetection>
+		<in_segmented type="in" group="YellowSegmentedImage"/>
+		<out_edgesDetected type="out" group="YellowEdgesDetected"/>
+		<out_contours type="out" group="YellowDrawLines"/>
+	</YellowEdgeDetection>
+
+	<BlueLineSegments>
+		<in_edgesDetected type="in" group="BlueEdgesDetected"/>
+		<out_lineSegmentsEstimated type="out" group="BlueSegmentsEstimated"/>
+		<out_lineSegments type="out" group="BlueDrawLines"/>
+	</BlueLineSegments>
+
+	<RedLineSegments>
+		<in_edgesDetected type="in" group="RedEdgesDetected"/>
+		<out_lineSegmentsEstimated type="out" group="RedSegmentsEstimated"/>
+	<!--	<out_lineSegments type="out" group="RedDrawLines"/>-->
+	</RedLineSegments>
+
+	<GreenLineSegments>
+		<in_edgesDetected type="in" group="GreenEdgesDetected"/>
+		<out_lineSegmentsEstimated type="out" group="GreenSegmentsEstimated"/>
+	<!--	<out_lineSegments type="out" group="GreenDrawLines"/>-->
+	</GreenLineSegments>
+
+	<YellowLineSegments>
+		<in_edgesDetected type="in" group="YellowEdgesDetected"/>
+		<out_lineSegmentsEstimated type="out" group="YellowSegmentsEstimated"/>
+		<out_lineSegments type="out" group="YellowDrawLines"/>
+	</YellowLineSegments>
+
+	<CspBlocksPreprocessor>
+		<in_lines type="in" group="LinesEstimated"/>
+		<in_blue type="in" group="BlueSegmentsEstimated"/>
+		<in_red type="in" group="RedSegmentsEstimated"/>
+		<in_green type="in" group="GreenSegmentsEstimated"/>
+		<in_yellow type="in" group="YellowSegmentsEstimated"/>
+	</CspBlocksPreprocessor>
+
+	<PreviewWindow>
+			<in_img0 type="in" group="OriginalImage"/>
+			<in_img1 type="in" group="OriginalImage"/>
+	<!--	<in_img type="in" group="ConvertedImage"/>	-->
+	<!--	<in_img type="in" group="ThresholdedImage"/> -->
+		<in_draw0 type="in" group="BlueDrawLines"/>
+		<in_draw1 type="in" group="YellowDrawLines"/>
+	<!--	<in_draw type="in" group="RecognizedDC"/>-->
+	</PreviewWindow>
+	
+<!--
+		<CspObjectRecognize>
+			<in_segmentedImage type="in" group="BlueSegmentsEstimated"/>
+			<out_recognizedDrawableContainer type="out" group="RecognizedDC"/>
+		</CspObjectRecognize>
+-->
+</DataStreams>
+</Task>

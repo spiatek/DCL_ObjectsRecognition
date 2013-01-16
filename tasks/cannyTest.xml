@@ -20,12 +20,18 @@
 		</CannyEdgesDetector>
 
 		<LineEstimator type="HoughTransform" thread="ProcessingThread" group="s1">
+			<type>1</type>
 			<threshold>30</threshold>
+			<rho>0.7</rho>
+			<theta>5</theta>
+			<srn>20</srn>
+			<stn>10</stn>
+		</LineEstimator>
+<!--			<threshold>30</threshold>
 			<rho>0.7</rho>
 			<theta>18</theta>
 			<srn>0</srn>
-			<stn>0</stn>
-		</LineEstimator>
+			<stn>0</stn>-->
 
 	<MorphClose type="CvMorphology" thread="ProcessingThread" group="s1">
 		<type>MORPH_RECT</type>

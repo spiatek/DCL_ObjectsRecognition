@@ -7,7 +7,7 @@
 		</Keyboard>
 		
         <ImageSource type="Sequence" thread="MainExecutor" group="s1">
-			<directory>../TestData</directory>
+			<directory>/home/spiatek/workspace/discode/DCL/DCL_ObjectsRecognition/TestData/MB</directory>
 			<triggered>true</triggered>
 			<sort>true</sort>
 		</ImageSource>
@@ -41,7 +41,7 @@
 		</LineSegments>
 		
 		<CspObjectRecognize type="CspObjectRecognize" thread="MainExecutor" group="s1">
-			<modelsFilename>../TestData/primitives.xml</modelsFilename>		
+			<modelsFilename>/home/spiatek/workspace/discode/DCL/DCL_ObjectsRecognition/TestData/MB/primitives.xml</modelsFilename>		
 		</CspObjectRecognize>
 	</Components>
 
