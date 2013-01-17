@@ -40,198 +40,51 @@
 
 	<NewestImage type="NewestImage" thread="ProcessingThread" group="s1">
 	</NewestImage>
--->
+	
 	<ColorConvertion type="CvColorConv" thread="ProcessingThread" group="s1">
 		<type>RGB2HSV</type>
 	</ColorConvertion>
+	
+-->
+		<BlueColorExtractor type="ExtractColor" thread="ProcessingThread" group="s1">
+			<ranges>
+				[3,2](
+					(40, 180),
+					(15, 80),
+					(0, 30)
+				)				
+			</ranges>
+		</BlueColorExtractor>
 
-	<BlueColorExtractor type="SetHSV" thread="ProcessingThread" group="s1">
-		<terminationOption>0</terminationOption>
-		<timeout>150</timeout>
-		<blue>
-			[3,2](
-				(0, 40),
-				(20, 255),
-				(40, 255)
-			)		
-		</blue>
-		<red>
-			[3,2](
-				(120, 180),
-				(130, 255),
-				(45, 255)
-			)		
-		</red>
-		<green>
-			[3,2](
-				(0, 40),
-				(15, 255),
-				(40, 255)
-			)		
-		</green>
-		<yellow>
-			[3,2](
-				(0, 40),
-				(20, 255),
-				(40, 255)
-			)		
-		</yellow>
-		<board>
-			[3,2](
-				(40, 170),
-				(220, 255),
-				(200, 255)
-			)				
-		</board>
-		<other>
-			[3,2](
-				(10, 40),
-				(20, 255),
-				(40, 255)
-			)		
-		</other>
-	</BlueColorExtractor>
+		<RedColorExtractor type="ExtractColor" thread="ProcessingThread" group="s1">
+			<ranges>
+				[3,2](
+					(0, 50),
+					(0, 50),
+					(60, 255)
+				)				
+			</ranges>
+		</RedColorExtractor>
 
-	<RedColorExtractor type="SetHSV" thread="ProcessingThread" group="s1">
-		<terminationOption>0</terminationOption>
-		<timeout>150</timeout>
-		<blue>
-			[3,2](
-				(0, 40),
-				(20, 255),
-				(40, 255)
-			)		
-		</blue>
-		<red>
-			[3,2](
-				(0, 40),
-				(20, 255),
-				(40, 255)
-			)		
-		</red>
-		<green>
-			[3,2](
-				(0, 40),
-				(20, 255),
-				(40, 255)
-			)		
-		</green>
-		<yellow>
-			[3,2](
-				(0, 40),
-				(20, 255),
-				(40, 255)
-			)		
-		</yellow>
-		<board>
-			[3,2](
-				(40, 170),
-				(220, 255),
-				(200, 255)
-			)				
-		</board>
-		<other>
-			[3,2](
-				(111, 180),
-				(115, 255),
-				(40, 200)
-			)
-		</other>
-	</RedColorExtractor>
+		<GreenColorExtractor type="ExtractColor" thread="ProcessingThread" group="s1">
+			<ranges>
+				[3,2](
+					(0, 60),
+					(20, 100),
+					(0, 40)
+				)				
+			</ranges>
+		</GreenColorExtractor>
 
-	<GreenColorExtractor type="SetHSV" thread="ProcessingThread" group="s1">
-		<terminationOption>0</terminationOption>
-		<timeout>150</timeout>
-		<blue>
-			[3,2](
-				(0, 40),
-				(20, 255),
-				(40, 255)
-			)		
-		</blue>
-		<red>
-			[3,2](
-				(0, 40),
-				(20, 255),
-				(40, 255)
-			)		
-		</red>
-		<green>
-			[3,2](
-				(45, 62),
-				(130, 255),
-				(30, 255)
-			)		
-		</green>
-		<yellow>
-			[3,2](
-				(0, 40),
-				(20, 255),
-				(40, 255)
-			)		
-		</yellow>
-		<board>
-			[3,2](
-				(40, 170),
-				(220, 255),
-				(200, 255)
-			)				
-		</board>
-		<other>
-			[3,2](
-				(45, 62),
-				(80, 255),
-				(50, 255)
-			)		
-		</other>
-	</GreenColorExtractor>
-
-	<YellowColorExtractor type="SetHSV" thread="ProcessingThread" group="s1">
-		<terminationOption>0</terminationOption>
-		<timeout>150</timeout>
-		<blue>
-			[3,2](
-				(0, 40),
-				(20, 255),
-				(40, 255)
-			)		
-		</blue>
-		<red>
-			[3,2](
-				(0, 40),
-				(20, 255),
-				(40, 255)
-			)		
-		</red>
-		<green>
-			[3,2](
-				(0, 40),
-				(20, 255),
-				(40, 255)
-			)		
-		</green>
-		<yellow>
-			[3,2](
-				(0, 40),
-				(20, 255),
-				(40, 255)
-			)		
-		</yellow>
-		<board>
-			[3,2](
-				(40, 170),
-				(220, 255),
-				(200, 255)
-			)				
-		</board>
-		<other>
-			[3,2](
-				(20, 170),
-				(120, 255),
-				(120, 255)
-			)				
-		</other>
-	</YellowColorExtractor>
+		<YellowColorExtractor type="ExtractColor" thread="ProcessingThread" group="s1">
+			<ranges>
+				[3,2](
+					(0, 60),
+					(70, 255),
+					(60, 255)
+				)				
+			</ranges>
+		</YellowColorExtractor>
 
 	<BlueMorphClose type="CvMorphology" thread="ProcessingThread" group="s1">
 		<type>MORPH_CLOSE</type>
@@ -366,11 +219,10 @@
 	<Event source="CannyEdgesDetector.edgesFound"	destination="LineEstimator.onNewImage"/>
 	<Event source="LineEstimator.linesFound"		destination="CspBlocksPreprocessor.onLinesEstimated"/>
 
-	<Event source="ImageSource.newImage"		 destination="ColorConvertion.onNewImage"/>
-	<Event source="ColorConvertion.newImage"	destination="BlueColorExtractor.onNewImage"/>
-	<Event source="ColorConvertion.newImage"	destination="RedColorExtractor.onNewImage"/>
-	<Event source="ColorConvertion.newImage"	destination="GreenColorExtractor.onNewImage"/>
-	<Event source="ColorConvertion.newImage"	destination="YellowColorExtractor.onNewImage"/>
+	<Event source="ImageSource.newImage"	destination="BlueColorExtractor.onNewImage"/>
+	<Event source="ImageSource.newImage"	destination="RedColorExtractor.onNewImage"/>
+	<Event source="ImageSource.newImage"	destination="GreenColorExtractor.onNewImage"/>
+	<Event source="ImageSource.newImage"	destination="YellowColorExtractor.onNewImage"/>
 	<Event source="BlueColorExtractor.newImage"		destination="BlueMorphClose.onNewImage"/>
 	<Event source="RedColorExtractor.newImage"		destination="RedMorphClose.onNewImage"/>
 	<Event source="GreenColorExtractor.newImage"	destination="GreenMorphClose.onNewImage"/>
@@ -403,7 +255,7 @@
 <!--	<Event source="YellowLineSegments.lineSegmentsEstimated"	destination="PreviewWindow.onNewImage0"/>-->
 
 	<Event source="ImageSource.newImage"		destination="PreviewWindow.onNewImage"/>
-	<Event source="CspBlocksPreprocessor.cspBlocksReady"	destination="PreviewWindow"/>
+	<Event source="CspBlocksPreprocessor.cspBlocksReady"	destination="PreviewWindow.onNewImage"/>
 <!--	<Event source="ImageSource.newImage"		destination="PreviewWindow.onNewImage1"/>-->
 
 <!--	<Event source="BlueLineSegments.lineSegmentsEstimated" destination="CspObjectRecognize.onSegmentedImage"/>-->
@@ -441,41 +293,24 @@
 		<out_linesVector type="out" group="LinesEstimated"/>
 	</LineEstimator>
 
-	<ColorConvertion>
-		<in_img type="in" group="OriginalImage"/>
-		<out_img type="out" group="ConvertedImage"/>
-	</ColorConvertion>
-
 	<BlueColorExtractor>
-		<in_img type="in" group="ConvertedImage"/>
+		<in_img type="in" group="OriginalImage"/>
 		<out_threshold type="out" group="BlueThresholdedImage"/>
-		<out_hue type="out" group="BlueHueImage"/>
-		<out_saturation type="out" group="BlueSaturationImage"/>
-		<out_value type="out" group="BlueValueImage"/>
 	</BlueColorExtractor>
     
 	<RedColorExtractor>
-		<in_img type="in" group="ConvertedImage"/>
+		<in_img type="in" group="OriginalImage"/>
 		<out_threshold type="out" group="RedThresholdedImage"/>
-		<out_hue type="out" group="RedHueImage"/>
-		<out_saturation type="out" group="RedSaturationImage"/>
-		<out_value type="out" group="RedValueImage"/>
 	</RedColorExtractor>
     
 	<GreenColorExtractor>
-		<in_img type="in" group="ConvertedImage"/>
+		<in_img type="in" group="OriginalImage"/>
 		<out_threshold type="out" group="GreenThresholdedImage"/>
-		<out_hue type="out" group="GreenHueImage"/>
-		<out_saturation type="out" group="GreenSaturationImage"/>
-		<out_value type="out" group="GreenValueImage"/>
 	</GreenColorExtractor>
     
 	<YellowColorExtractor>
-		<in_img type="in" group="ConvertedImage"/>
+		<in_img type="in" group="OriginalImage"/>
 		<out_threshold type="out" group="YellowThresholdedImage"/>
-		<out_hue type="out" group="YellowHueImage"/>
-		<out_saturation type="out" group="YellowSaturationImage"/>
-		<out_value type="out" group="YellowValueImage"/>
 	</YellowColorExtractor>
     
 	<BlueMorphClose>
