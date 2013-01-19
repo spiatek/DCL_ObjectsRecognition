@@ -3,10 +3,16 @@
  *
  *  Created on: 04-12-2010
  *      Author: mateusz
+ *      Edit:	spiatek
  */
 
 #ifndef SEGMENT_HPP_
 #define SEGMENT_HPP_
+
+#define	BLUE	1
+#define RED		2
+#define GREEN	3
+#define YELLOW	4
 
 #include <cv.h>
 
@@ -27,12 +33,15 @@ public:
 	virtual ~Segment();
 
 	cv::Point getStartingPoint() const;
+	cv::Point getSegmentCenter() const;
 	MaskType getSegmentClass() const;
 	void setSegmentImage(cv::Mat& segmentImage);
 	void setSegmentImageFromSegmentedImage(cv::Mat& segmentedImage);
 	cv::Mat getSegmentImage();
 	std::vector <std::vector <cv::Point> >* getContours();
 	std::vector <Types::Line>* getLineSegments();
+	void setSegmentColor(int sCol);
+	int getSegmentColor();
 private:
 	cv::Point startingPoint;
 	MaskType segmentClass;
@@ -42,6 +51,8 @@ private:
 
 	bool areaComputed;
 	int area;
+
+	int segmentColor;
 
 	bool contoursComputed;
 	std::vector <std::vector <cv::Point> > contours;

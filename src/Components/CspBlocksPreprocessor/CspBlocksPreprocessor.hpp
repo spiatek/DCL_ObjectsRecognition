@@ -102,13 +102,17 @@ private:
 	 */
 	Base::DataStreamOut <Types::DrawableContainer> out_contours;
 
+	Base::DataStreamOut <std::vector<Types::Segmentation::Segment> > out_segments;
+	Base::DataStreamOut <std::vector<cv::Vec4i> > out_lines;
+	Base::DataStreamOut <std::vector<int> > out_nearestSegments;
+
 	Types::Segmentation::SegmentedImage blue_si;		bool isBlue;
 	Types::Segmentation::SegmentedImage red_si;			bool isRed;
 	Types::Segmentation::SegmentedImage green_si;		bool isGreen;
 	Types::Segmentation::SegmentedImage yellow_si;		bool isYellow;
 
 	vector<cv::Vec4i> lines;							bool isLines;
-														bool isReady;
+		bool lock;										bool isReady;
 		/**
 	 * Edges detected event.
 	 */

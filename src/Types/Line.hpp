@@ -64,6 +64,19 @@ public:
 	}
 
 
+	cv::Point getCenter()
+	{
+		cv::Point pc;
+		pc.x = (p1.x + p2.x)/2;
+		pc.y = (p1.y + p2.y)/2;
+		return pc;
+	}
+
+	double getLength()
+	{
+		return(sqrt(pow(p1.x - p2.x,2) + pow(p1.y - p2.y,2)));
+	}
+
 	cv::Point getP1(){
 		return p1;
 	}

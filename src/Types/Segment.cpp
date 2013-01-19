@@ -40,6 +40,7 @@ Segment::Segment(const Segment& o)
 	contours = o.contours;
 	lineSegmentsComputed = o.lineSegmentsComputed;
 	lineSegments = o.lineSegments;
+	segmentColor = o.segmentColor;
 }
 
 Segment::~Segment()
@@ -50,6 +51,32 @@ cv::Point Segment::getStartingPoint() const
 {
 	return startingPoint;
 }
+
+cv::Point Segment::getSegmentCenter() const
+{
+	size_t j;
+	std::vector<cv::Point> centers;
+
+	for(j = 0; j < lineSegments.size(); ++j) {
+		Types::Line l = lineSegments[j];
+		centers.push_back(l.getCenter());
+	}
+
+	double x, y, x_sum, y_sum;
+	for(j = 0; j < centers.size(); ++j) {
+		x_sum += centers[j].x;
+		y_sum += centers[j].y;
+	}
+	x = x_sum/centers.size();
+	y = y_sum/centers.size();
+
+	cv::Point center;
+	center.x = x;
+	center.y = y;
+
+	return center;
+}
+
 MaskType Segment::getSegmentClass() const
 {
 	return segmentClass;
@@ -81,6 +108,16 @@ void Segment::setSegmentImageFromSegmentedImage(cv::Mat& segmentedImage)
 	}
 
 	segmentImageSet = true;
+}
+
+void Segment::setSegmentColor(int sCol)
+{
+	segmentColor = sCol;
+}
+
+int Segment::getSegmentColor()
+{
+	return segmentColor;
 }
 
 void Segment::computeContours()
