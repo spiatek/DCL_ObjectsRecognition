@@ -178,6 +178,10 @@
 	<CspBlocksPreprocessor type="CspBlocksPreprocessor" thread="CspExecutor" group="s1">
 	</CspBlocksPreprocessor>
 
+		<CspBlockObjectRecognize type="CspBlockObjectRecognize" thread="CspExecutor" group="s1">
+			<modelsFilename>/home/spiatek/workspace/discode/DCL/DCL_ObjectsRecognition/TestData/SP/primitives.xml</modelsFilename>		
+		</CspBlockObjectRecognize>
+
 <!--
 		<CspObjectRecognize type="CspObjectRecognize" thread="ProcessingThread" group="s1">
 			<modelsFilename>/home/spiatek/workspace/discode/DCL/DCL_ObjectsRecognition/TestData/MB/primitives.xml</modelsFilename>		
@@ -249,13 +253,15 @@
 	<Event source="GreenLineSegments.lineSegmentsEstimated"	destination="CspBlocksPreprocessor.onLineGreenSegmentsEstimated"/>
 	<Event source="YellowLineSegments.lineSegmentsEstimated"	destination="CspBlocksPreprocessor.onLineYellowSegmentsEstimated"/>
 	
+	<Event source="CspBlocksPreprocessor.cspBlocksReady"	destination="CspBlockObjectRecognize.onNewImage"/>
+	
 <!--	<Event source="BlueLineSegments.lineSegmentsEstimated"	destination="PreviewWindow.onNewImage1"/>-->
 <!--	<Event source="RedLineSegments.lineSegmentsEstimated"	destination="PreviewWindow.onNewImage1"/>-->
 <!--	<Event source="GreenLineSegments.lineSegmentsEstimated"	destination="PreviewWindow.onNewImage1"/>-->
 <!--	<Event source="YellowLineSegments.lineSegmentsEstimated"	destination="PreviewWindow.onNewImage0"/>-->
 
 	<Event source="ImageSource.newImage"		destination="PreviewWindow.onNewImage"/>
-	<Event source="CspBlocksPreprocessor.cspBlocksReady"	destination="PreviewWindow.onNewImage"/>
+<!--	<Event source="CspBlocksPreprocessor.cspBlocksReady"	destination="PreviewWindow.onNewImage"/>-->
 <!--	<Event source="ImageSource.newImage"		destination="PreviewWindow.onNewImage1"/>-->
 
 <!--	<Event source="BlueLineSegments.lineSegmentsEstimated" destination="CspObjectRecognize.onSegmentedImage"/>-->
@@ -428,7 +434,17 @@
 		<in_greenSegments type="in" group="GreenSegmentsEstimated"/>
 		<in_yellowSegments type="in" group="YellowSegmentsEstimated"/>
 		<out_contours type="out" group="DrawContours"/>
+		<out_segments type="out" group="CspSegments"/>
+		<out_lines type="out" group="CspLines"/>
+		<out_nearestSegments type="out" group="NearestSegments"/>
 	</CspBlocksPreprocessor>
+
+	<CspBlockObjectRecognize>
+		<in_segments type="in" group="CspSegments"/>
+		<in_lines type="in" group="CspLines"/>
+		<in_nearestSegments type="in" group="NearestSegments"/>
+		<out_recognizedDrawableContainer type="out" group="RecognizedDC"/>
+	</CspBlockObjectRecognize>
 
 	<PreviewWindow>
 			<in_img type="in" group="OriginalImage"/>
