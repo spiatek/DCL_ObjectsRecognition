@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<models>
+	<singleBlueBlock1 numberOfVertices="4">
+		<drawColor>
+			<R>0</R>
+			<G>255</G>
+			<B>255</B>
+		</drawColor>
+		<constraints>
+			<c0 type="junction" from="0" to="1"></c0>
+			<c1 type="junction" from="1" to="2"></c1>
+			<c2 type="junction" from="2" to="3"></c2>
+			<c3 type="junction" from="3" to="0"></c3>
+			<c4 type="equation" from="0" to="1"></c4>
+			<c5 type="equation" from="1" to="2"></c5>
+			<c6 type="equation" from="2" to="3"></c6>
+			<c7 type="equation" from="3" to="0"></c7>
+			<c8 type="parallel" from="0" to="2"></c8>
+			<c9 type="parallel" from="1" to="3"></c9>
+		</constraints>
+	</singleBlueBlock1>
+
+	<doubleBlueBlock1 numberOfVertices="4">
+		<drawColor>
+			<R>255</R>
+			<G>0</G>
+			<B>255</B>
+		</drawColor>
+		<constraints>
+			<c0 type="junction" from="0" to="1"></c0>
+			<c1 type="junction" from="1" to="2"></c1>
+			<c2 type="junction" from="2" to="3"></c2>
+			<c3 type="junction" from="3" to="0"></c3>
+			<c4 type="equation" from="0" to="2"></c4>
+			<c5 type="equation" from="1" to="3"></c5>
+			<c6 type="twoTimesGreater" from="0" to="1"></c6>
+			<c7 type="twoTimesGreater" from="2" to="3"></c7>
+			<c8 type="parallel" from="0" to="2"></c8>
+			<c9 type="parallel" from="1" to="3"></c9>
+		</constraints>
+	</doubleBlueBlock1>
+
+</models>
