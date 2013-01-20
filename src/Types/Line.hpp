@@ -16,6 +16,9 @@ namespace Types {
 class Line: public Types::Drawable
 {
 public:
+
+	Line() {}
+
 	Line(cv::Point p1, cv::Point p2) :
 		p1(p1), p2(p2)
 	{

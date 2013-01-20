@@ -14,6 +14,7 @@
 
 #include "Logger.hpp"
 #include <string>
+#include <iostream>
 
 namespace Processors {
 namespace CspBlockObjectRecognize {
@@ -66,13 +67,15 @@ ObjectInstanceVector BlockShapeRecognize::recognizeVS(vector<Types::Segmentation
 				ShapeVector shapeVector = objectModel->getFoundObject();
 				boost::shared_ptr<ObjectInstance> inst = boost::shared_ptr<ObjectInstance>(new ObjectInstance(objectModel, shapeVector));
 				instances.push_back(inst);
-				LOG(LINFO) << "BlockShapeRecognize::recognize(): instance of " + modelName
-						+ " found: shapeVector.size() = " << shapeVector.size();
+				//LOG(LINFO) << "BlockShapeRecognize::recognize(): instance of " + modelName
+				//		+ " found: shapeVector.size() = " << shapeVector.size();
+				std::cout << "BlockShapeRecognize::recognize(): instance of " + modelName
+									+ " found: shapeVector.size() = " << shapeVector.size() << std::endl;
 			}
 		}
 	}
 
-	LOG(LDEBUG) << "BlockShapeRecognize::recognize(): found " << instances.size() << " instances.\n";
+	std::cout << "BlockShapeRecognize::recognize(): found " << instances.size() << " instances.\n";
 	return instances;
 }
 

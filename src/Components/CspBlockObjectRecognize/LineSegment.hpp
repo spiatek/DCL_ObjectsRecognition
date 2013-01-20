@@ -9,6 +9,7 @@
 #define LINESEGMENT_HPP_
 
 #include <cv.h>
+#include <boost/shared_ptr.hpp>
 
 #include "AbstractShape.hpp"
 #include "Types/Line.hpp"
@@ -30,7 +31,7 @@ public:
 	 */
 	LineSegment(const Types::Line& line);
 
-	//LineSegment(int x1, int y1, int x2, int y2);
+	LineSegment(int x1, int y1, int x2, int y2);
 
 	virtual ~LineSegment();
 
@@ -44,7 +45,7 @@ public:
 	 * Get parameters of linear equation.
 	 * @return
 	 */
-void getLineParams(boost::shared_ptr<double> a, boost::shared_ptr<double> b, boost::shared_ptr<double> c);
+	void getLineParams(double* a, double* b, double* c);
 
 	/**
 	 * Draw on image.

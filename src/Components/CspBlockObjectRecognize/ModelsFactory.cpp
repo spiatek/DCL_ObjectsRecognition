@@ -15,6 +15,8 @@
 #include "ModelsFactory.hpp"
 #include "JunctionConstraint.hpp"
 #include "LinesAngleConstraint.hpp"
+#include "LinesLengthConstraint.hpp"
+#include "ParallelLineConstraint.hpp"
 
 #include "Logger.hpp"
 
@@ -111,8 +113,16 @@ boost::shared_ptr <AbstractConstraint> ModelsFactory::buildConstraint(const boos
 	string type = node.get <string> ("<xmlattr>.type");
 
 	if (type == "junction") {
-		constraint = boost::shared_ptr <AbstractConstraint>(new JunctionConstraint(node));
-	} else {
+
+		constraint = boost::shared_ptr<AbstractConstraint>(new JunctionConstraint(node));
+	}
+	else if (type == "linesLength") {
+		constraint = boost::shared_ptr<AbstractConstraint>(new LinesLengthConstraint(node));
+	}
+	else if (type == "parallel") {
+		constraint = boost::shared_ptr<AbstractConstraint>(new ParallelLineConstraint(node));
+	}
+	else {
 		throw runtime_error("ModelsFactory::buildConstraint(): unknown type: \"" + type + "\".");
 	}
 

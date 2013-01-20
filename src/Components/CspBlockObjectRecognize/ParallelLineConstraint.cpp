@@ -1,20 +1,18 @@
-/*!
- * \file ParallelLineConstraint.cpp
- * \brief
- * \author spiatek
- * \date 2012-12-13
+/*
+ * ParallelLineConstraint.cpp
+ *
+ *  Created on: 13-12-2012
+ *      Author: spiatek
  */
 
 #include "ParallelLineConstraint.hpp"
-
-#include "LineSegment.hpp"
 
 namespace Processors {
 namespace CspBlockObjectRecognize {
 
 ParallelLineConstraint::ParallelLineConstraint(const boost::property_tree::ptree& node)
 {
-	angle = node.get<double>("angle", 15.0);
+	angle = node.get<double>("<xmlattr>.angle", 15.0);
 }
 
 ParallelLineConstraint::~ParallelLineConstraint()
@@ -35,8 +33,8 @@ bool ParallelLineConstraint::isSatisifed(boost::shared_ptr<AbstractShape> first,
 		return false;
 	}
 
-	//firstLine->getLine(&a1, &b1, &c1);
-	//secondLine->getLine(&a2, &b2, &c2);
+	firstLine->getLineParams(&a1, &b1, &c1);
+	secondLine->getLineParams(&a2, &b2, &c2);
 
 	dir = Math::AngleLines(a1, b1, a2, b2);
 	ang = dir*180.0/3.1415926;

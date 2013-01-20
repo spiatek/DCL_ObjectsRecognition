@@ -12,3 +12,5 @@ ADD_COMPONENT(LineSegments)
 ADD_COMPONENT(FindBlock)
 
 ADD_COMPONENT(CspBlocksPreprocessor)
+
+ADD_COMPONENT(CspBlockObjectRecognize)

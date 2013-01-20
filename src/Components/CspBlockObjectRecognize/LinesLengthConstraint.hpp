@@ -9,7 +9,10 @@
 #define LINESLENGTHCONSTRAINT_HPP_
 
 #include <boost/property_tree/ptree.hpp>
+#include <boost/shared_ptr.hpp>
 
+#include "Types/Line.hpp"
+#include "LineSegment.hpp"
 #include "AbstractConstraint.hpp"
 
 namespace Processors {

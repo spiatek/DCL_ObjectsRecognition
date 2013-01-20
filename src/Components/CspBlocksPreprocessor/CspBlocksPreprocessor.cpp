@@ -236,18 +236,18 @@ bool CspBlocksPreprocessor_Processor::onStep()
 		cv::Point* p1 = new cv::Point(center.x + 1, center.y + 1);
 		Types::Line* line = new Types::Line(center, *p1);
 		dc1.add(line);
-		std::vector <Types::Line>* lines = s.getLineSegments();	//linie
-		std::cout << "Kolor: " << color << std::endl;
-		std::cout << "Srodek: " << center.x << ", " << center.y << std::endl;
-		std::cout << "Liczba linii: " << lines->size() << std::endl;
+		//std::vector <Types::Line>* lines = s.getLineSegments();	//linie
+		//std::cout << "Kolor: " << color << std::endl;
+		//std::cout << "Srodek: " << center.x << ", " << center.y << std::endl;
+		//std::cout << "Liczba linii: " << lines->size() << std::endl;
 	}
 
-	std::cout << "Nearest segments:" << std::endl;
+	//std::cout << "Nearest segments:" << std::endl;
 	for(int i = 0; i < nearestSegments.size(); i++) {
 		int nearest = nearestSegments[i];
-		std::cout << "K" << allSegments[nearest].getSegmentColor() << ": N" << nearest << " | ";
+		//std::cout << "K" << allSegments[nearest].getSegmentColor() << ": N" << nearest << " | ";
 	}
-	std::cout << std::endl;
+	//std::cout << std::endl;
 	//out_contours.write(dc);
 
 	out_segments.write(allSegments);

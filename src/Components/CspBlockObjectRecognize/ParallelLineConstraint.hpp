@@ -11,6 +11,7 @@
 #include <boost/property_tree/ptree.hpp>
 
 #include "AbstractConstraint.hpp"
+#include "LineSegment.hpp"
 
 namespace Processors {
 namespace CspBlockObjectRecognize {
