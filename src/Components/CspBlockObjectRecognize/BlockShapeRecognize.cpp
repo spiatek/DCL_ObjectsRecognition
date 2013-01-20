@@ -51,6 +51,7 @@ ObjectInstanceVector BlockShapeRecognize::recognizeVS(vector<Types::Segmentation
 				cv::Point* p1 = new cv::Point(v4l[0], v4l[1]);
 				cv::Point* p2 = new cv::Point(v4l[2], v4l[3]);
 				Types::Line* line = new Types::Line(*p1, *p2);
+				line->setColor(color);
 
 				boost::shared_ptr <AbstractShape> shape = boost::shared_ptr <AbstractShape>(new LineSegment(*line));
 				segments.push_back(shape);

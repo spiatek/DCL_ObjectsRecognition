@@ -15,6 +15,11 @@
 #include "Types/Line.hpp"
 #include "Math.hpp"
 
+#define BLUE	1
+#define RED		2
+#define GREEN	3
+#define YELLOW	4
+
 namespace Processors {
 namespace CspBlockObjectRecognize {
 
@@ -46,6 +51,9 @@ public:
 	 * @return
 	 */
 	void getLineParams(double* a, double* b, double* c);
+
+	void setColor(int c);
+	int getColor();
 
 	/**
 	 * Draw on image.

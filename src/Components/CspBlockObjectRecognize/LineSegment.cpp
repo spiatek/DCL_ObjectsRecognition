@@ -35,6 +35,16 @@ Types::Line& LineSegment::getLine()
 	return line;
 }
 
+void LineSegment::setColor(int c)
+{
+	line.setColor(c);
+}
+
+int LineSegment::getColor()
+{
+	return line.getColor();
+}
+
 void LineSegment::getLineParams(double* a, double* b, double* c)
 {
 	A = 0.0;

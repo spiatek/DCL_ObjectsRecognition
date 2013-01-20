@@ -66,6 +66,15 @@ public:
 		return fabs(A * p.x + B * p.y + C) / sqrt(A * A + B * B);
 	}
 
+	void setColor(int c)
+	{
+		color = c;
+	}
+
+	int getColor()
+	{
+		return color;
+	}
 
 	cv::Point getCenter()
 	{
@@ -120,7 +129,7 @@ private:
 
 	bool lineEquationComputed;
 	double A, B, C;
-
+	int color;
 	//CvScalar m_col;
 };
 

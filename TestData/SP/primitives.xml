@@ -17,8 +17,84 @@
 			<c7 type="linesLength" from="3" to="0" minLengthRelative="1" maxLengthRelative="1.2"></c7>
 			<c8 type="parallel" from="0" to="2" angle="15.0"></c8>
 			<c9 type="parallel" from="1" to="3" angle="15.0"></c9>
+			<c10 type="color" color="1" from="0" to="1"></c10>
+			<c11 type="color" color="1" from="1" to="2"></c11>
+			<c12 type="color" color="1" from="2" to="3"></c12>
+			<c13 type="color" color="1" from="3" to="0"></c13>
 		</constraints>
 	</singleBlueBlock1>
+
+	<singleRedBlock1 numberOfVertices="4">
+		<drawColor>
+			<R>0</R>
+			<G>255</G>
+			<B>255</B>
+		</drawColor>
+		<constraints>
+			<c0 type="junction" from="0" to="1"></c0>
+			<c1 type="junction" from="1" to="2"></c1>
+			<c2 type="junction" from="2" to="3"></c2>
+			<c3 type="junction" from="3" to="0"></c3>
+			<c4 type="linesLength" from="0" to="1" minLengthRelative="1" maxLengthRelative="1.2"></c4>
+			<c5 type="linesLength" from="1" to="2" minLengthRelative="1" maxLengthRelative="1.2"></c5>
+			<c6 type="linesLength" from="2" to="3" minLengthRelative="1" maxLengthRelative="1.2"></c6>
+			<c7 type="linesLength" from="3" to="0" minLengthRelative="1" maxLengthRelative="1.2"></c7>
+			<c8 type="parallel" from="0" to="2" angle="15.0"></c8>
+			<c9 type="parallel" from="1" to="3" angle="15.0"></c9>
+			<c10 type="color" color="2" from="0" to="1"></c10>
+			<c11 type="color" color="2" from="1" to="2"></c11>
+			<c12 type="color" color="2" from="2" to="3"></c12>
+			<c13 type="color" color="2" from="3" to="0"></c13>
+		</constraints>
+	</singleRedBlock1>
+
+	<singleGreenBlock1 numberOfVertices="4">
+		<drawColor>
+			<R>0</R>
+			<G>255</G>
+			<B>255</B>
+		</drawColor>
+		<constraints>
+			<c0 type="junction" from="0" to="1"></c0>
+			<c1 type="junction" from="1" to="2"></c1>
+			<c2 type="junction" from="2" to="3"></c2>
+			<c3 type="junction" from="3" to="0"></c3>
+			<c4 type="linesLength" from="0" to="1" minLengthRelative="1" maxLengthRelative="1.2"></c4>
+			<c5 type="linesLength" from="1" to="2" minLengthRelative="1" maxLengthRelative="1.2"></c5>
+			<c6 type="linesLength" from="2" to="3" minLengthRelative="1" maxLengthRelative="1.2"></c6>
+			<c7 type="linesLength" from="3" to="0" minLengthRelative="1" maxLengthRelative="1.2"></c7>
+			<c8 type="parallel" from="0" to="2" angle="15.0"></c8>
+			<c9 type="parallel" from="1" to="3" angle="15.0"></c9>
+			<c10 type="color" color="3" from="0" to="1"></c10>
+			<c11 type="color" color="3" from="1" to="2"></c11>
+			<c12 type="color" color="3" from="2" to="3"></c12>
+			<c13 type="color" color="3" from="3" to="0"></c13>
+		</constraints>
+	</singleGreenBlock1>
+
+	<singleYellowBlock1 numberOfVertices="4">
+		<drawColor>
+			<R>0</R>
+			<G>255</G>
+			<B>255</B>
+		</drawColor>
+		<constraints>
+			<c0 type="junction" from="0" to="1"></c0>
+			<c1 type="junction" from="1" to="2"></c1>
+			<c2 type="junction" from="2" to="3"></c2>
+			<c3 type="junction" from="3" to="0"></c3>
+			<c4 type="linesLength" from="0" to="1" minLengthRelative="1" maxLengthRelative="1.2"></c4>
+			<c5 type="linesLength" from="1" to="2" minLengthRelative="1" maxLengthRelative="1.2"></c5>
+			<c6 type="linesLength" from="2" to="3" minLengthRelative="1" maxLengthRelative="1.2"></c6>
+			<c7 type="linesLength" from="3" to="0" minLengthRelative="1" maxLengthRelative="1.2"></c7>
+			<c8 type="parallel" from="0" to="2" angle="15.0"></c8>
+			<c9 type="parallel" from="1" to="3" angle="15.0"></c9>
+			<c10 type="color" color="4" from="0" to="1"></c10>
+			<c11 type="color" color="4" from="1" to="2"></c11>
+			<c12 type="color" color="4" from="2" to="3"></c12>
+			<c13 type="color" color="4" from="3" to="0"></c13>
+		</constraints>
+	</singleYellowBlock1>
 
 	<doubleBlueBlock1 numberOfVertices="4">
 		<drawColor>
@@ -37,10 +113,86 @@
 			<c7 type="linesLength" from="2" to="3" minLengthRelative="1.8" maxLengthRelative="2.2"></c7>
 			<c8 type="parallel" from="0" to="2" angle="15.0"></c8>
 			<c9 type="parallel" from="1" to="3" angle="15.0"></c9>
+			<c10 type="color" color="1" from="0" to="1"></c10>
+			<c11 type="color" color="1" from="1" to="2"></c11>
+			<c12 type="color" color="1" from="2" to="3"></c12>
+			<c13 type="color" color="1" from="3" to="0"></c13>
 		</constraints>
 	</doubleBlueBlock1>
 
-	<czworokat numberOfVertices="4">
+	<doubleRedBlock1 numberOfVertices="4">
+		<drawColor>
+			<R>255</R>
+			<G>0</G>
+			<B>255</B>
+		</drawColor>
+		<constraints>
+			<c0 type="junction" from="0" to="1"></c0>
+			<c1 type="junction" from="1" to="2"></c1>
+			<c2 type="junction" from="2" to="3"></c2>
+			<c3 type="junction" from="3" to="0"></c3>
+			<c4 type="linesLength" from="0" to="2" minLengthRelative="1" maxLengthRelative="1.2"></c4>
+			<c5 type="linesLength" from="1" to="3" minLengthRelative="1" maxLengthRelative="1.2"></c5>
+			<c6 type="linesLength" from="0" to="1" minLengthRelative="1.8" maxLengthRelative="2.2"></c6>
+			<c7 type="linesLength" from="2" to="3" minLengthRelative="1.8" maxLengthRelative="2.2"></c7>
+			<c8 type="parallel" from="0" to="2" angle="15.0"></c8>
+			<c9 type="parallel" from="1" to="3" angle="15.0"></c9>
+			<c10 type="color" color="2" from="0" to="1"></c10>
+			<c11 type="color" color="2" from="1" to="2"></c11>
+			<c12 type="color" color="2" from="2" to="3"></c12>
+			<c13 type="color" color="2" from="3" to="0"></c13>
+		</constraints>
+	</doubleRedBlock1>
+
+	<doubleGreenBlock1 numberOfVertices="4">
+		<drawColor>
+			<R>255</R>
+			<G>0</G>
+			<B>255</B>
+		</drawColor>
+		<constraints>
+			<c0 type="junction" from="0" to="1"></c0>
+			<c1 type="junction" from="1" to="2"></c1>
+			<c2 type="junction" from="2" to="3"></c2>
+			<c3 type="junction" from="3" to="0"></c3>
+			<c4 type="linesLength" from="0" to="2" minLengthRelative="1" maxLengthRelative="1.2"></c4>
+			<c5 type="linesLength" from="1" to="3" minLengthRelative="1" maxLengthRelative="1.2"></c5>
+			<c6 type="linesLength" from="0" to="1" minLengthRelative="1.8" maxLengthRelative="2.2"></c6>
+			<c7 type="linesLength" from="2" to="3" minLengthRelative="1.8" maxLengthRelative="2.2"></c7>
+			<c8 type="parallel" from="0" to="2" angle="15.0"></c8>
+			<c9 type="parallel" from="1" to="3" angle="15.0"></c9>
+			<c10 type="color" color="3" from="0" to="1"></c10>
+			<c11 type="color" color="3" from="1" to="2"></c11>
+			<c12 type="color" color="3" from="2" to="3"></c12>
+			<c13 type="color" color="3" from="3" to="0"></c13>
+		</constraints>
+	</doubleGreenBlock1>
+
+	<doubleYellowBlock1 numberOfVertices="4">
+		<drawColor>
+			<R>255</R>
+			<G>0</G>
+			<B>255</B>
+		</drawColor>
+		<constraints>
+			<c0 type="junction" from="0" to="1"></c0>
+			<c1 type="junction" from="1" to="2"></c1>
+			<c2 type="junction" from="2" to="3"></c2>
+			<c3 type="junction" from="3" to="0"></c3>
+			<c4 type="linesLength" from="0" to="2" minLengthRelative="1" maxLengthRelative="1.2"></c4>
+			<c5 type="linesLength" from="1" to="3" minLengthRelative="1" maxLengthRelative="1.2"></c5>
+			<c6 type="linesLength" from="0" to="1" minLengthRelative="1.8" maxLengthRelative="2.2"></c6>
+			<c7 type="linesLength" from="2" to="3" minLengthRelative="1.8" maxLengthRelative="2.2"></c7>
+			<c8 type="parallel" from="0" to="2" angle="15.0"></c8>
+			<c9 type="parallel" from="1" to="3" angle="15.0"></c9>
+			<c10 type="color" color="4" from="0" to="1"></c10>
+			<c11 type="color" color="4" from="1" to="2"></c11>
+			<c12 type="color" color="4" from="2" to="3"></c12>
+			<c13 type="color" color="4" from="3" to="0"></c13>
+		</constraints>
+	</doubleYellowBlock1>
+
+<!--	<czworokat numberOfVertices="4">
 		<drawColor>
 			<R>255</R>
 			<G>0</G>
@@ -52,6 +204,6 @@
 			<c2 type="junction" from="2" to="3"></c2>
 			<c3 type="junction" from="3" to="0"></c3>
 		</constraints>
-	</czworokat>
+	</czworokat>-->
 
 </models>
