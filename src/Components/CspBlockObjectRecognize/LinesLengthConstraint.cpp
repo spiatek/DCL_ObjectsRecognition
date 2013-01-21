@@ -6,6 +6,7 @@
  */
 
 #include <limits>
+#include <iostream>
 
 #include "LinesLengthConstraint.hpp"
 
@@ -48,6 +49,8 @@ bool LinesLengthConstraint::isSatisifed(boost::shared_ptr <AbstractShape> first,
 		{
 			k = length2 / length1;
 		}
+
+		//std::cout << "Dlugosci: " << minLengthRelative << " < " << k << "<" << maxLengthRelative << std::endl;
 
 		if(k >= minLengthRelative && k <= maxLengthRelative)
 		{

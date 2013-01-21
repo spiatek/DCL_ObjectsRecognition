@@ -41,6 +41,8 @@ public:
 	 * @param color
 	 */
 	virtual void draw(cv::Mat &image, CvScalar color) = 0;
+protected:
+	int color;
 };
 
 /** Collection of shapes used by CspGraph. */

@@ -266,7 +266,7 @@
 
 <!--	<Event source="BlueLineSegments.lineSegmentsEstimated" destination="CspObjectRecognize.onSegmentedImage"/>-->
 
-<!--	<Event source="CspObjectRecognize.recognized" destination="PreviewWindow.onNewImage" />	-->
+	<Event source="CspBlockObjectRecognize.recognized" destination="PreviewWindow.onNewImage" />
 	
 </Events>
 
@@ -448,13 +448,13 @@
 
 	<PreviewWindow>
 			<in_img type="in" group="OriginalImage"/>
-			<in_draw type="in" group="DrawContours"/>
+			<in_draw0 type="in" group="DrawContours"/>
 <!--			<in_img1 type="in" group="OriginalImage"/>-->
 	<!--	<in_img type="in" group="ConvertedImage"/>	-->
 	<!--	<in_img type="in" group="ThresholdedImage"/> -->
 <!--		<in_draw0 type="in" group="BlueDrawLines"/>
 		<in_draw1 type="in" group="YellowDrawLines"/>-->
-	<!--	<in_draw type="in" group="RecognizedDC"/>-->
+		<in_draw type="in" group="RecognizedDC"/>
 	</PreviewWindow>
 	
 <!--

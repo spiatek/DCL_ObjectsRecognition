@@ -52,9 +52,11 @@ ObjectInstanceVector BlockShapeRecognize::recognizeVS(vector<Types::Segmentation
 				cv::Point* p2 = new cv::Point(v4l[2], v4l[3]);
 				Types::Line* line = new Types::Line(*p1, *p2);
 				line->setColor(color);
-
-				boost::shared_ptr <AbstractShape> shape = boost::shared_ptr <AbstractShape>(new LineSegment(*line));
+				//std::cout << "Wczytano kolor: " << line->getColor() << ", a powinien być " << color << std::endl;
+				boost::shared_ptr <AbstractShape> shape = boost::shared_ptr <AbstractShape>(new LineSegment(*line, color));
 				segments.push_back(shape);
+				LineSegment *ls = dynamic_cast <LineSegment*> (shape.get());
+				//std::cout << "A teraz jest: " << ls->getColor() << ", apb " << color << std::endl;
 			}
 		}
 

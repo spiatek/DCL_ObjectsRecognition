@@ -19,6 +19,11 @@ LineSegment::LineSegment(const Types::Line& line) :
 {
 }
 
+LineSegment::LineSegment(const Types::Line& line, int c) :
+	line(line), color(c)
+{
+}
+
 LineSegment::LineSegment(int x1, int y1, int x2, int y2)
 {
 	A = 0.0;
@@ -37,12 +42,12 @@ Types::Line& LineSegment::getLine()
 
 void LineSegment::setColor(int c)
 {
-	line.setColor(c);
+	color = c;
 }
 
 int LineSegment::getColor()
 {
-	return line.getColor();
+	return color;
 }
 
 void LineSegment::getLineParams(double* a, double* b, double* c)

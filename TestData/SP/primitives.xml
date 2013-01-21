@@ -11,10 +11,10 @@
 			<c1 type="junction" from="1" to="2"></c1>
 			<c2 type="junction" from="2" to="3"></c2>
 			<c3 type="junction" from="3" to="0"></c3>
-			<c4 type="linesLength" from="0" to="1" minLengthRelative="1" maxLengthRelative="1.2"></c4>
-			<c5 type="linesLength" from="1" to="2" minLengthRelative="1" maxLengthRelative="1.2"></c5>
-			<c6 type="linesLength" from="2" to="3" minLengthRelative="1" maxLengthRelative="1.2"></c6>
-			<c7 type="linesLength" from="3" to="0" minLengthRelative="1" maxLengthRelative="1.2"></c7>
+			<c4 type="linesLength" from="0" to="1" minLengthRelative="1" maxLengthRelative="1.05"></c4>
+			<c5 type="linesLength" from="1" to="2" minLengthRelative="1" maxLengthRelative="1.05"></c5>
+			<c6 type="linesLength" from="2" to="3" minLengthRelative="1" maxLengthRelative="1.05"></c6>
+			<c7 type="linesLength" from="3" to="0" minLengthRelative="1" maxLengthRelative="1.05"></c7>
 			<c8 type="parallel" from="0" to="2" angle="15.0"></c8>
 			<c9 type="parallel" from="1" to="3" angle="15.0"></c9>
 			<c10 type="color" color="1" from="0" to="1"></c10>
@@ -35,10 +35,10 @@
 			<c1 type="junction" from="1" to="2"></c1>
 			<c2 type="junction" from="2" to="3"></c2>
 			<c3 type="junction" from="3" to="0"></c3>
-			<c4 type="linesLength" from="0" to="1" minLengthRelative="1" maxLengthRelative="1.2"></c4>
-			<c5 type="linesLength" from="1" to="2" minLengthRelative="1" maxLengthRelative="1.2"></c5>
-			<c6 type="linesLength" from="2" to="3" minLengthRelative="1" maxLengthRelative="1.2"></c6>
-			<c7 type="linesLength" from="3" to="0" minLengthRelative="1" maxLengthRelative="1.2"></c7>
+			<c4 type="linesLength" from="0" to="1" minLengthRelative="1" maxLengthRelative="1.05"></c4>
+			<c5 type="linesLength" from="1" to="2" minLengthRelative="1" maxLengthRelative="1.05"></c5>
+			<c6 type="linesLength" from="2" to="3" minLengthRelative="1" maxLengthRelative="1.05"></c6>
+			<c7 type="linesLength" from="3" to="0" minLengthRelative="1" maxLengthRelative="1.05"></c7>
 			<c8 type="parallel" from="0" to="2" angle="15.0"></c8>
 			<c9 type="parallel" from="1" to="3" angle="15.0"></c9>
 			<c10 type="color" color="2" from="0" to="1"></c10>
@@ -59,10 +59,10 @@
 			<c1 type="junction" from="1" to="2"></c1>
 			<c2 type="junction" from="2" to="3"></c2>
 			<c3 type="junction" from="3" to="0"></c3>
-			<c4 type="linesLength" from="0" to="1" minLengthRelative="1" maxLengthRelative="1.2"></c4>
-			<c5 type="linesLength" from="1" to="2" minLengthRelative="1" maxLengthRelative="1.2"></c5>
-			<c6 type="linesLength" from="2" to="3" minLengthRelative="1" maxLengthRelative="1.2"></c6>
-			<c7 type="linesLength" from="3" to="0" minLengthRelative="1" maxLengthRelative="1.2"></c7>
+			<c4 type="linesLength" from="0" to="1" minLengthRelative="1" maxLengthRelative="1.05"></c4>
+			<c5 type="linesLength" from="1" to="2" minLengthRelative="1" maxLengthRelative="1.05"></c5>
+			<c6 type="linesLength" from="2" to="3" minLengthRelative="1" maxLengthRelative="1.05"></c6>
+			<c7 type="linesLength" from="3" to="0" minLengthRelative="1" maxLengthRelative="1.05"></c7>
 			<c8 type="parallel" from="0" to="2" angle="15.0"></c8>
 			<c9 type="parallel" from="1" to="3" angle="15.0"></c9>
 			<c10 type="color" color="3" from="0" to="1"></c10>
@@ -83,10 +83,10 @@
 			<c1 type="junction" from="1" to="2"></c1>
 			<c2 type="junction" from="2" to="3"></c2>
 			<c3 type="junction" from="3" to="0"></c3>
-			<c4 type="linesLength" from="0" to="1" minLengthRelative="1" maxLengthRelative="1.2"></c4>
-			<c5 type="linesLength" from="1" to="2" minLengthRelative="1" maxLengthRelative="1.2"></c5>
-			<c6 type="linesLength" from="2" to="3" minLengthRelative="1" maxLengthRelative="1.2"></c6>
-			<c7 type="linesLength" from="3" to="0" minLengthRelative="1" maxLengthRelative="1.2"></c7>
+			<c4 type="linesLength" from="0" to="1" minLengthRelative="1" maxLengthRelative="1.05"></c4>
+			<c5 type="linesLength" from="1" to="2" minLengthRelative="1" maxLengthRelative="1.05"></c5>
+			<c6 type="linesLength" from="2" to="3" minLengthRelative="1" maxLengthRelative="1.05"></c6>
+			<c7 type="linesLength" from="3" to="0" minLengthRelative="1" maxLengthRelative="1.05"></c7>
 			<c8 type="parallel" from="0" to="2" angle="15.0"></c8>
 			<c9 type="parallel" from="1" to="3" angle="15.0"></c9>
 			<c10 type="color" color="4" from="0" to="1"></c10>
@@ -107,10 +107,10 @@
 			<c1 type="junction" from="1" to="2"></c1>
 			<c2 type="junction" from="2" to="3"></c2>
 			<c3 type="junction" from="3" to="0"></c3>
-			<c4 type="linesLength" from="0" to="2" minLengthRelative="1" maxLengthRelative="1.2"></c4>
-			<c5 type="linesLength" from="1" to="3" minLengthRelative="1" maxLengthRelative="1.2"></c5>
-			<c6 type="linesLength" from="0" to="1" minLengthRelative="1.8" maxLengthRelative="2.2"></c6>
-			<c7 type="linesLength" from="2" to="3" minLengthRelative="1.8" maxLengthRelative="2.2"></c7>
+			<c4 type="linesLength" from="0" to="2" minLengthRelative="1" maxLengthRelative="1.05"></c4>
+			<c5 type="linesLength" from="1" to="3" minLengthRelative="1" maxLengthRelative="1.05"></c5>
+			<c6 type="linesLength" from="0" to="1" minLengthRelative="1.95" maxLengthRelative="2.05"></c6>
+			<c7 type="linesLength" from="2" to="3" minLengthRelative="1.95" maxLengthRelative="2.05"></c7>
 			<c8 type="parallel" from="0" to="2" angle="15.0"></c8>
 			<c9 type="parallel" from="1" to="3" angle="15.0"></c9>
 			<c10 type="color" color="1" from="0" to="1"></c10>
@@ -131,10 +131,10 @@
 			<c1 type="junction" from="1" to="2"></c1>
 			<c2 type="junction" from="2" to="3"></c2>
 			<c3 type="junction" from="3" to="0"></c3>
-			<c4 type="linesLength" from="0" to="2" minLengthRelative="1" maxLengthRelative="1.2"></c4>
-			<c5 type="linesLength" from="1" to="3" minLengthRelative="1" maxLengthRelative="1.2"></c5>
-			<c6 type="linesLength" from="0" to="1" minLengthRelative="1.8" maxLengthRelative="2.2"></c6>
-			<c7 type="linesLength" from="2" to="3" minLengthRelative="1.8" maxLengthRelative="2.2"></c7>
+			<c4 type="linesLength" from="0" to="2" minLengthRelative="1" maxLengthRelative="1.05"></c4>
+			<c5 type="linesLength" from="1" to="3" minLengthRelative="1" maxLengthRelative="1.05"></c5>
+			<c6 type="linesLength" from="0" to="1" minLengthRelative="1.95" maxLengthRelative="2.05"></c6>
+			<c7 type="linesLength" from="2" to="3" minLengthRelative="1.95" maxLengthRelative="2.05"></c7>
 			<c8 type="parallel" from="0" to="2" angle="15.0"></c8>
 			<c9 type="parallel" from="1" to="3" angle="15.0"></c9>
 			<c10 type="color" color="2" from="0" to="1"></c10>
@@ -155,10 +155,10 @@
 			<c1 type="junction" from="1" to="2"></c1>
 			<c2 type="junction" from="2" to="3"></c2>
 			<c3 type="junction" from="3" to="0"></c3>
-			<c4 type="linesLength" from="0" to="2" minLengthRelative="1" maxLengthRelative="1.2"></c4>
-			<c5 type="linesLength" from="1" to="3" minLengthRelative="1" maxLengthRelative="1.2"></c5>
-			<c6 type="linesLength" from="0" to="1" minLengthRelative="1.8" maxLengthRelative="2.2"></c6>
-			<c7 type="linesLength" from="2" to="3" minLengthRelative="1.8" maxLengthRelative="2.2"></c7>
+			<c4 type="linesLength" from="0" to="2" minLengthRelative="1" maxLengthRelative="1.05"></c4>
+			<c5 type="linesLength" from="1" to="3" minLengthRelative="1" maxLengthRelative="1.05"></c5>
+			<c6 type="linesLength" from="0" to="1" minLengthRelative="1.95" maxLengthRelative="2.05"></c6>
+			<c7 type="linesLength" from="2" to="3" minLengthRelative="1.95" maxLengthRelative="2.05"></c7>
 			<c8 type="parallel" from="0" to="2" angle="15.0"></c8>
 			<c9 type="parallel" from="1" to="3" angle="15.0"></c9>
 			<c10 type="color" color="3" from="0" to="1"></c10>
@@ -179,10 +179,10 @@
 			<c1 type="junction" from="1" to="2"></c1>
 			<c2 type="junction" from="2" to="3"></c2>
 			<c3 type="junction" from="3" to="0"></c3>
-			<c4 type="linesLength" from="0" to="2" minLengthRelative="1" maxLengthRelative="1.2"></c4>
-			<c5 type="linesLength" from="1" to="3" minLengthRelative="1" maxLengthRelative="1.2"></c5>
-			<c6 type="linesLength" from="0" to="1" minLengthRelative="1.8" maxLengthRelative="2.2"></c6>
-			<c7 type="linesLength" from="2" to="3" minLengthRelative="1.8" maxLengthRelative="2.2"></c7>
+			<c4 type="linesLength" from="0" to="2" minLengthRelative="1" maxLengthRelative="1.05"></c4>
+			<c5 type="linesLength" from="1" to="3" minLengthRelative="1" maxLengthRelative="1.05"></c5>
+			<c6 type="linesLength" from="0" to="1" minLengthRelative="1.95" maxLengthRelative="2.05"></c6>
+			<c7 type="linesLength" from="2" to="3" minLengthRelative="1.95" maxLengthRelative="2.05"></c7>
 			<c8 type="parallel" from="0" to="2" angle="15.0"></c8>
 			<c9 type="parallel" from="1" to="3" angle="15.0"></c9>
 			<c10 type="color" color="4" from="0" to="1"></c10>

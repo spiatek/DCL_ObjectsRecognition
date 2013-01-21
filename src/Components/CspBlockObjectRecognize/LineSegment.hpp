@@ -35,6 +35,7 @@ public:
 	 * @param line
 	 */
 	LineSegment(const Types::Line& line);
+	LineSegment(const Types::Line& line, int c);
 
 	LineSegment(int x1, int y1, int x2, int y2);
 
@@ -62,6 +63,7 @@ public:
 	 */
 	virtual void draw(cv::Mat &image, CvScalar color);
 private:
+	int color;
 	/** Line. */
 	Types::Line line;
 	cv::Point p1, p2;

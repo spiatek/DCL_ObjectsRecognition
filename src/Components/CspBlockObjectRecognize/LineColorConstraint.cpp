@@ -6,6 +6,7 @@
  */
 
 #include <limits>
+#include <iostream>
 
 #include "LineColorConstraint.hpp"
 
@@ -30,7 +31,8 @@ bool LineColorConstraint::isSatisifed(boost::shared_ptr <AbstractShape> first, b
 		LineSegment* f = dynamic_cast <LineSegment*> (first.get());
 		LineSegment* s = dynamic_cast <LineSegment*> (second.get());
 
-		if(f->getColor() == s->getColor() && color == f->getColor())
+		//std::cout << "Kolorki " << color << ", " << f->getColor() << ", " << s->getColor() << ".\n";
+		if(color == s->getColor() && color == f->getColor())
 		{
 			return true;
 		}
