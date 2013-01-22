@@ -39,7 +39,7 @@ public:
 	 * @param second
 	 * @return true if an angle is close enough to 0 degrees.
 	 */
-	virtual bool isSatisifed(boost::shared_ptr<AbstractShape> first, boost::shared_ptr<AbstractShape> second);
+	virtual bool isSatisfied(boost::shared_ptr<AbstractShape> first, boost::shared_ptr<AbstractShape> second);
 private:
 	double angle;
 };

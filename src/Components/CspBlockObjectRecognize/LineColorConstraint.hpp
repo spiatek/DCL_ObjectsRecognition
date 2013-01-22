@@ -40,7 +40,7 @@ public:
 	 * @param second
 	 * @return
 	 */
-	virtual bool isSatisifed(boost::shared_ptr<AbstractShape> first, boost::shared_ptr<AbstractShape> second);
+	virtual bool isSatisfied(boost::shared_ptr<AbstractShape> first, boost::shared_ptr<AbstractShape> second);
 
 private:
 	 int color;

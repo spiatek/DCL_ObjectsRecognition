@@ -24,7 +24,7 @@ LineColorConstraint::~LineColorConstraint()
 {
 }
 
-bool LineColorConstraint::isSatisifed(boost::shared_ptr <AbstractShape> first, boost::shared_ptr <AbstractShape> second)
+bool LineColorConstraint::isSatisfied(boost::shared_ptr <AbstractShape> first, boost::shared_ptr <AbstractShape> second)
 {
 	if(first != NULL && second != NULL)
 	{

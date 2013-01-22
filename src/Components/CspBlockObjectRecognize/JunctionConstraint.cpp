@@ -21,7 +21,7 @@ JunctionConstraint::~JunctionConstraint()
 {
 }
 
-bool JunctionConstraint::isSatisifed(boost::shared_ptr<AbstractShape> first, boost::shared_ptr<AbstractShape> second)
+bool JunctionConstraint::isSatisfied(boost::shared_ptr<AbstractShape> first, boost::shared_ptr<AbstractShape> second)
 {
 	LineSegment *firstLine = dynamic_cast <LineSegment*> (first.get());
 	LineSegment *secondLine = dynamic_cast <LineSegment*> (second.get());

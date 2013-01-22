@@ -42,7 +42,7 @@ public:
 	 * @param second vertex to.
 	 * @return true if condition is met.
 	 */
-	virtual bool isSatisifed(boost::shared_ptr<AbstractShape> first, boost::shared_ptr<AbstractShape> second) = 0;
+	virtual bool isSatisfied(boost::shared_ptr<AbstractShape> first, boost::shared_ptr<AbstractShape> second) = 0;
 protected:
 	/**
 	 * Calculate distance between points.

@@ -38,7 +38,7 @@ public:
 	 * @param second
 	 * @return true if ends are close enough.
 	 */
-	virtual bool isSatisifed(boost::shared_ptr<AbstractShape> first, boost::shared_ptr<AbstractShape> second);
+	virtual bool isSatisfied(boost::shared_ptr<AbstractShape> first, boost::shared_ptr<AbstractShape> second);
 private:
 	double maxDistance;
 };

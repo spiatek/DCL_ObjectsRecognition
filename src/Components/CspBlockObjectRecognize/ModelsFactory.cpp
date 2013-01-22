@@ -18,6 +18,7 @@
 #include "LinesLengthConstraint.hpp"
 #include "ParallelLineConstraint.hpp"
 #include "LineColorConstraint.hpp"
+#include "LinesPerpendicularConstraint.hpp"
 
 #include "Logger.hpp"
 
@@ -121,6 +122,12 @@ boost::shared_ptr <AbstractConstraint> ModelsFactory::buildConstraint(const boos
 	}
 	else if (type == "parallel") {
 		constraint = boost::shared_ptr<AbstractConstraint>(new ParallelLineConstraint(node));
+	}
+	else if (type == "angle") {
+		constraint = boost::shared_ptr<AbstractConstraint>(new LinesAngleConstraint(node));
+	}
+	else if (type == "perpendicular") {
+		constraint = boost::shared_ptr<AbstractConstraint>(new LinesPerpendicularConstraint(node));
 	}
 	else if (type == "color") {
 		constraint = boost::shared_ptr<AbstractConstraint>(new LineColorConstraint(node));

@@ -27,7 +27,7 @@ LinesLengthConstraint::~LinesLengthConstraint()
 {
 }
 
-bool LinesLengthConstraint::isSatisifed(boost::shared_ptr <AbstractShape> first, boost::shared_ptr <AbstractShape> second)
+bool LinesLengthConstraint::isSatisfied(boost::shared_ptr <AbstractShape> first, boost::shared_ptr <AbstractShape> second)
 {
 	double length1;
 	double length2;

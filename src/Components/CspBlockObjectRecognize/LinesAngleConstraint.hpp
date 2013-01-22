@@ -8,6 +8,10 @@
 #ifndef LINESANGLECONSTRAINT_HPP_
 #define LINESANGLECONSTRAINT_HPP_
 
+#include <boost/property_tree/ptree.hpp>
+
+#include "Types/Line.hpp"
+#include "LineSegment.hpp"
 #include "AbstractConstraint.hpp"
 
 namespace Processors {
@@ -27,9 +31,11 @@ namespace CspBlockObjectRecognize {
 class LinesAngleConstraint: public Processors::CspBlockObjectRecognize::AbstractConstraint
 {
 public:
-	LinesAngleConstraint();
+	LinesAngleConstraint(const boost::property_tree::ptree& node);
 	virtual ~LinesAngleConstraint();
-	virtual bool isSatisifed(boost::shared_ptr<AbstractShape> first, boost::shared_ptr<AbstractShape> second);
+	virtual bool isSatisfied(boost::shared_ptr<AbstractShape> first, boost::shared_ptr<AbstractShape> second);
+private:
+	int angleLines;
 };
 
 }

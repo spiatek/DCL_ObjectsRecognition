@@ -19,7 +19,7 @@ ParallelLineConstraint::~ParallelLineConstraint()
 {
 }
 
-bool ParallelLineConstraint::isSatisifed(boost::shared_ptr<AbstractShape> first, boost::shared_ptr<AbstractShape> second)
+bool ParallelLineConstraint::isSatisfied(boost::shared_ptr<AbstractShape> first, boost::shared_ptr<AbstractShape> second)
 {
 	double a1 = 0.0, b1 = 0.0, c1 = 0.0;
 	double a2 = 0.0, b2 = 0.0, c2 = 0.0;

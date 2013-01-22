@@ -338,7 +338,7 @@ bool CspGraph::checkConstraint(boost::shared_ptr <AbstractShape> first, boost::s
 	if (first != NULL && second != NULL)//jak ktores jest nullem to zakladamy ze ograniczenia sa spelnione
 	{
 		for (uint i = 0; i < constraintVector.size(); i++) {
-			if (!constraintVector[i]->isSatisifed(first, second)) {
+			if (!constraintVector[i]->isSatisfied(first, second)) {
 				return false;
 			}
 		}
