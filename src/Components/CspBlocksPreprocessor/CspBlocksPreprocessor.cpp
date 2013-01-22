@@ -83,18 +83,23 @@ bool CspBlocksPreprocessor_Processor::onStep()
 {
 	LOG(LTRACE) << "CspBlocksPreprocessor_Processor::step\n";
 
+	if(lock == true)
+		return true;
+	else {
+		lock = true;
+	}
+
 	//DrawableContainer dc;
 	DrawableContainer dc1;
 	std::vector<Types::Segmentation::Segment> allSegments;
 	std::vector<double> minLengths, maxLengths;
 
-	if(!isReady) {
-		if(isBlue && isRed && isGreen && isYellow && isLines) {
-			isReady = true;
-		}
-		else {
-			return true;
-		}
+	if(isBlue && isRed && isGreen && isYellow && isLines) {
+		isBlue = false;	isGreen = false;	isYellow = false;	isRed = false;	isLines = false;
+	}
+	else {
+		lock = false;
+		return true;
 	}
 
 	int counter = 0;
@@ -113,7 +118,7 @@ bool CspBlocksPreprocessor_Processor::onStep()
 		//std::cout << std::endl;
 		minLengths.push_back(min_length);
 		maxLengths.push_back(max_length);
-		if(max_length < 200) {
+		if(max_length < 250 && max_length > 20) {
 			Types::Segmentation::Segment* seg = new Types::Segmentation::Segment(s);
 			seg->setSegmentColor(BLUE);
 			allSegments.push_back(*seg);
@@ -139,7 +144,7 @@ bool CspBlocksPreprocessor_Processor::onStep()
 		//std::cout << std::endl;
 		minLengths.push_back(min_length);
 		maxLengths.push_back(max_length);
-		if(max_length < 200) {
+		if(max_length < 250 && max_length > 20) {
 			Types::Segmentation::Segment* seg = new Types::Segmentation::Segment(s);
 			seg->setSegmentColor(RED);
 			allSegments.push_back(*seg);
@@ -165,7 +170,7 @@ bool CspBlocksPreprocessor_Processor::onStep()
 		//std::cout << std::endl;
 		minLengths.push_back(min_length);
 		maxLengths.push_back(max_length);
-		if(max_length < 200) {
+		if(max_length < 250 && max_length > 20) {
 			Types::Segmentation::Segment* seg = new Types::Segmentation::Segment(s);
 			seg->setSegmentColor(GREEN);
 			allSegments.push_back(*seg);
@@ -191,7 +196,7 @@ bool CspBlocksPreprocessor_Processor::onStep()
 		//std::cout << std::endl;
 		minLengths.push_back(min_length);
 		maxLengths.push_back(max_length);
-		if(max_length < 200) {
+		if(max_length < 250 && max_length > 20) {
 			Types::Segmentation::Segment* seg = new Types::Segmentation::Segment(s);
 			seg->setSegmentColor(YELLOW);
 			allSegments.push_back(*seg);

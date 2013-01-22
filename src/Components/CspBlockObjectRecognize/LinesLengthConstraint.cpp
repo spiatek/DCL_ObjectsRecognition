@@ -41,6 +41,10 @@ bool LinesLengthConstraint::isSatisifed(boost::shared_ptr <AbstractShape> first,
 		length1 = (f->getLine()).getLength();
 		length2 = (s->getLine()).getLength();
 
+		if(length1 > 566 || length2 > 566 || length1 < 40 || length2 < 40) {
+			return false;
+		}
+
 		if(length1 >= length2)
 		{
 			k = length1 / length2;
@@ -54,6 +58,9 @@ bool LinesLengthConstraint::isSatisifed(boost::shared_ptr <AbstractShape> first,
 
 		if(k >= minLengthRelative && k <= maxLengthRelative)
 		{
+			//std::cout << "Dlugosci: (1) " << length1 << " (2) " << length2 << " min "
+			//		<< minLengthRelative << " k " << k << " max " << maxLengthRelative << std::endl;
+
 			return true;
 		}
 	}
