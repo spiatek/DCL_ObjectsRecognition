@@ -9,14 +9,14 @@
 	</Keyboard>
 		
 	<ImageSource type="Sequence" thread="ProcessingThread" group="s1">
-		<directory>/home/spiatek/workspace/discode/DCL/DCL_ObjectsRecognition/TestData/SP/white</directory>
+		<directory>/home/spiatek/workspace/discode/DCL/DCL_ObjectsRecognition/TestData/SP/seq111</directory>
 		<triggered>true</triggered>
 		<sort>true</sort>
 	</ImageSource>
 
 	<Erode type="CvMorphology" thread="ProcessingThread" group="s1">
-		<type>MORPH_RECT</type>
-		<iterations>3</iterations>
+		<type>MORPH_OPEN</type>
+		<iterations>2</iterations>
 	</Erode>
 
 	<CannyEdgesDetector type="CannyFilter" thread="ProcessingThread" group="s1">
@@ -41,12 +41,52 @@
 	<NewestImage type="NewestImage" thread="ProcessingThread" group="s1">
 	</NewestImage>
 	
-	<ColorConvertion type="CvColorConv" thread="ProcessingThread" group="s1">
-		<type>RGB2HSV</type>
-	</ColorConvertion>
-	
 -->
+	<ColorConvertor type="CvColorConv" thread="ProcessingThread" group="s1">
+		<type>RGB2HSV</type>
+	</ColorConvertor>
+	
 		<BlueColorExtractor type="ExtractColor" thread="ProcessingThread" group="s1">
+			<ranges>
+				[3,2](
+					(10, 35),
+					(10, 250),
+					(0, 255)
+				)				
+			</ranges>
+		</BlueColorExtractor>
+
+		<RedColorExtractor type="ExtractColor" thread="ProcessingThread" group="s1">
+			<ranges>
+				[3,2](
+					(100, 120),
+					(10, 250),
+					(180, 255)
+				)				
+			</ranges>
+		</RedColorExtractor>
+
+		<GreenColorExtractor type="ExtractColor" thread="ProcessingThread" group="s1">
+			<ranges>
+				[3,2](
+					(35, 65),
+					(10, 250),
+					(0, 255)
+				)				
+			</ranges>
+		</GreenColorExtractor>
+
+		<YellowColorExtractor type="ExtractColor" thread="ProcessingThread" group="s1">
+			<ranges>
+				[3,2](
+					(75, 100),
+					(10, 250),
+					(80, 255)
+				)				
+			</ranges>
+		</YellowColorExtractor>
+		
+<!--		<BlueColorExtractor type="ExtractColor" thread="ProcessingThread" group="s1">
 			<ranges>
 				[3,2](
 					(40, 180),
@@ -85,7 +125,7 @@
 				)				
 			</ranges>
 		</YellowColorExtractor>
-
+-->
 	<BlueMorphClose type="CvMorphology" thread="ProcessingThread" group="s1">
 		<type>MORPH_CLOSE</type>
 		<iterations>3</iterations>
@@ -172,7 +212,7 @@
 
 		<PreviewWindow type="CvWindow" thread="PreviewExecutor" group="s1">
 			<title>Preview </title>
-			<count>1</count>
+			<count>5</count>
 		</PreviewWindow>
 		
 	<CspBlocksPreprocessor type="CspBlocksPreprocessor" thread="CspExecutor" group="s1">
@@ -223,10 +263,11 @@
 	<Event source="CannyEdgesDetector.edgesFound"	destination="LineEstimator.onNewImage"/>
 	<Event source="LineEstimator.linesFound"		destination="CspBlocksPreprocessor.onLinesEstimated"/>
 
-	<Event source="ImageSource.newImage"	destination="BlueColorExtractor.onNewImage"/>
-	<Event source="ImageSource.newImage"	destination="RedColorExtractor.onNewImage"/>
-	<Event source="ImageSource.newImage"	destination="GreenColorExtractor.onNewImage"/>
-	<Event source="ImageSource.newImage"	destination="YellowColorExtractor.onNewImage"/>
+	<Event source="ImageSource.newImage"	destination="ColorConvertor.onNewImage"/>
+	<Event source="ColorConvertor.newImage"	destination="BlueColorExtractor.onNewImage"/>
+	<Event source="ColorConvertor.newImage"	destination="RedColorExtractor.onNewImage"/>
+	<Event source="ColorConvertor.newImage"	destination="GreenColorExtractor.onNewImage"/>
+	<Event source="ColorConvertor.newImage"	destination="YellowColorExtractor.onNewImage"/>
 	<Event source="BlueColorExtractor.newImage"		destination="BlueMorphClose.onNewImage"/>
 	<Event source="RedColorExtractor.newImage"		destination="RedMorphClose.onNewImage"/>
 	<Event source="GreenColorExtractor.newImage"	destination="GreenMorphClose.onNewImage"/>
@@ -260,7 +301,12 @@
 <!--	<Event source="GreenLineSegments.lineSegmentsEstimated"	destination="PreviewWindow.onNewImage1"/>-->
 <!--	<Event source="YellowLineSegments.lineSegmentsEstimated"	destination="PreviewWindow.onNewImage0"/>-->
 
-	<Event source="ImageSource.newImage"		destination="PreviewWindow.onNewImage"/>
+	<Event source="BlueColorExtractor.newImage"		destination="PreviewWindow.onNewImage1"/>
+	<Event source="RedColorExtractor.newImage"		destination="PreviewWindow.onNewImage2"/>
+	<Event source="GreenColorExtractor.newImage"	destination="PreviewWindow.onNewImage3"/>
+	<Event source="YellowColorExtractor.newImage"	destination="PreviewWindow.onNewImage4"/>
+	<Event source="ImageSource.newImage"		destination="PreviewWindow.onNewImage0"/>
+	
 <!--	<Event source="CspBlocksPreprocessor.cspBlocksReady"	destination="PreviewWindow.onNewImage"/>-->
 <!--	<Event source="ImageSource.newImage"		destination="PreviewWindow.onNewImage1"/>-->
 
@@ -299,23 +345,28 @@
 		<out_linesVector type="out" group="LinesEstimated"/>
 	</LineEstimator>
 
-	<BlueColorExtractor>
+	<ColorConvertor>
 		<in_img type="in" group="OriginalImage"/>
+		<out_img type="out" group="ConvertedImage"/>
+	</ColorConvertor>
+
+	<BlueColorExtractor>
+		<in_img type="in" group="ConvertedImage"/>
 		<out_threshold type="out" group="BlueThresholdedImage"/>
 	</BlueColorExtractor>
     
 	<RedColorExtractor>
-		<in_img type="in" group="OriginalImage"/>
+		<in_img type="in" group="ConvertedImage"/>
 		<out_threshold type="out" group="RedThresholdedImage"/>
 	</RedColorExtractor>
     
 	<GreenColorExtractor>
-		<in_img type="in" group="OriginalImage"/>
+		<in_img type="in" group="ConvertedImage"/>
 		<out_threshold type="out" group="GreenThresholdedImage"/>
 	</GreenColorExtractor>
     
 	<YellowColorExtractor>
-		<in_img type="in" group="OriginalImage"/>
+		<in_img type="in" group="ConvertedImage"/>
 		<out_threshold type="out" group="YellowThresholdedImage"/>
 	</YellowColorExtractor>
     
@@ -447,14 +498,17 @@
 	</CspBlockObjectRecognize>
 
 	<PreviewWindow>
-			<in_img type="in" group="OriginalImage"/>
+			<in_img1 type="in" group="BlueThresholdedImage"/>
+			<in_img2 type="in" group="RedThresholdedImage"/>
+			<in_img3 type="in" group="GreenThresholdedImage"/>
+			<in_img4 type="in" group="YellowThresholdedImage"/>
 			<in_draw0 type="in" group="DrawContours"/>
-<!--			<in_img1 type="in" group="OriginalImage"/>-->
+			<in_img0 type="in" group="OriginalImage"/>
 	<!--	<in_img type="in" group="ConvertedImage"/>	-->
 	<!--	<in_img type="in" group="ThresholdedImage"/> -->
 <!--		<in_draw0 type="in" group="BlueDrawLines"/>
 		<in_draw1 type="in" group="YellowDrawLines"/>-->
-		<in_draw type="in" group="RecognizedDC"/>
+		<in_draw1 type="in" group="RecognizedDC"/>
 	</PreviewWindow>
 	
 <!--
