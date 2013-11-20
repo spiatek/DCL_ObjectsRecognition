@@ -27,9 +27,9 @@ GrayImageSegmentation_Processor::~GrayImageSegmentation_Processor()
 	LOG(LTRACE) << "Good bye GrayImageSegmentation_Processor\n";
 }
 
-bool GrayImageSegmentation_Processor::onInit()
+void GrayImageSegmentation_Processor::prepareInterface()
 {
-	LOG(LTRACE) << "GrayImageSegmentation_Processor::initialize\n";
+	LOG(LTRACE) << "GrayImageSegmentation_Processor::prepareInterface\n";
 
 	// Register data streams, events and event handlers HERE!
 	h_onNewImage.setup(this, &GrayImageSegmentation_Processor::onNewImage);
@@ -42,6 +42,13 @@ bool GrayImageSegmentation_Processor::onInit()
 
 	segmentExtractor.setMinSegmentArea(props.minSegmentArea);
 	segmentExtractor.setMinVariance(props.minVariance);
+}
+
+
+bool GrayImageSegmentation_Processor::onInit()
+{
+	LOG(LTRACE) << "GrayImageSegmentation_Processor::initialize\n";
+
 	return true;
 }
 

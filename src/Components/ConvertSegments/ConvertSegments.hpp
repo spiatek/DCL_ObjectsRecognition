@@ -115,6 +115,8 @@ public:
 
 protected:
 
+	void prepareInterface();
+
 	/*!
 	 * Connects source to given device.
 	 */

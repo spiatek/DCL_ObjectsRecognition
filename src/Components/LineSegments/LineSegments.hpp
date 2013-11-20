@@ -76,6 +76,8 @@ public:
 	virtual ~LineSegments_Processor();
 protected:
 
+	void prepareInterface();
+
 	/*!
 	 * Connects source to given device.
 	 */

@@ -33,9 +33,9 @@ ConvertSegments_Processor::~ConvertSegments_Processor()
 	LOG(LTRACE) << "Good bye ConvertSegments_Processor\n";
 }
 
-bool ConvertSegments_Processor::onInit()
+void ConvertSegments_Processor::prepareInterface()
 {
-	LOG(LTRACE) << "ConvertSegments_Processor::initialize\n";
+	LOG(LTRACE) << "ConvertSegments_Processor::prepareInterface\n";
 
 	// Register data streams, events and event handlers HERE!
 	h_onSegmented.setup(this, &ConvertSegments_Processor::onSegmented);
@@ -45,6 +45,11 @@ bool ConvertSegments_Processor::onInit()
 
 	registerStream("out_img", &out_img);
 	newImage = registerEvent("newImage");
+}
+
+bool ConvertSegments_Processor::onInit()
+{
+	LOG(LTRACE) << "ConvertSegments_Processor::initialize\n";
 
 	return true;
 }

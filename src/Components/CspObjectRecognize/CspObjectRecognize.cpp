@@ -29,9 +29,9 @@ CspObjectRecognize_Processor::~CspObjectRecognize_Processor()
 	LOG(LTRACE) << "Good bye CspObjectRecognize_Processor\n";
 }
 
-bool CspObjectRecognize_Processor::onInit()
+void CspObjectRecognize_Processor::prepareInterface()
 {
-	LOG(LTRACE) << "CspObjectRecognize_Processor::initialize\n";
+	LOG(LTRACE) << "CspObjectRecognize_Processor::prepareInterface\n";
 
 	// Register data streams, events and event handlers HERE!
 	registerStream("in_segmentedImage", &in_segmentedImage);
@@ -48,8 +48,12 @@ bool CspObjectRecognize_Processor::onInit()
 		shapeRegognize->setModels(modelsFactory->loadModels());
 	} catch (exception& e) {
 		LOG(LFATAL) << "Error loading models from " << string(modelsFilename) << ": " << e.what() << "\n";
-		return false;
 	}
+}
+
+bool CspObjectRecognize_Processor::onInit()
+{
+	LOG(LTRACE) << "CspObjectRecognize_Processor::initialize\n";
 
 	return true;
 }

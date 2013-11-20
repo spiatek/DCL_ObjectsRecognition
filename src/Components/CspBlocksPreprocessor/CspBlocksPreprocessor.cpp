@@ -31,9 +31,9 @@ CspBlocksPreprocessor_Processor::~CspBlocksPreprocessor_Processor()
 	LOG(LTRACE) << "Good bye CspBlocksPreprocessor_Processor\n";
 }
 
-bool CspBlocksPreprocessor_Processor::onInit()
+void CspBlocksPreprocessor_Processor::prepareInterface()
 {
-	LOG(LTRACE) << "CspBlocksPreprocessor_Processor::initialize\n";
+	LOG(LTRACE) << "CspBlocksPreprocessor_Processor::prepareInterface\n";
 
 	// Register data streams, events and event handlers HERE!
 	registerStream("in_blueSegments", &in_blueSegments);
@@ -68,6 +68,11 @@ bool CspBlocksPreprocessor_Processor::onInit()
 	isLines = false;
 	isReady = false;
 	lock = false;
+}
+
+bool CspBlocksPreprocessor_Processor::onInit()
+{
+	LOG(LTRACE) << "CspBlocksPreprocessor_Processor::initialize\n";
 
 	return true;
 }

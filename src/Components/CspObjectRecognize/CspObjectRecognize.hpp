@@ -124,6 +124,8 @@ public:
 	virtual ~CspObjectRecognize_Processor();
 protected:
 
+	void prepareInterface();
+
 	/*!
 	 * Connects source to given device.
 	 */

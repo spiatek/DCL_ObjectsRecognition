@@ -26,9 +26,9 @@ LineSegments_Processor::~LineSegments_Processor()
 	LOG(LTRACE) << "Good bye LineSegments_Processor\n";
 }
 
-bool LineSegments_Processor::onInit()
+void LineSegments_Processor::prepareInterface()
 {
-	LOG(LTRACE) << "LineSegments_Processor::initialize\n";
+	LOG(LTRACE) << "LineSegments_Processor::prepareInterface\n";
 
 	// Register data streams, events and event handlers HERE!
 
@@ -39,6 +39,12 @@ bool LineSegments_Processor::onInit()
 	registerStream("out_lineSegmentsEstimated", &out_lineSegmentsEstimated);
 	registerStream("out_lineSegments", &out_lineSegments);
 	lineSegmentsEstimated = registerEvent("lineSegmentsEstimated");
+}
+
+bool LineSegments_Processor::onInit()
+{
+	LOG(LTRACE) << "LineSegments_Processor::initialize\n";
+
 	return true;
 }
 

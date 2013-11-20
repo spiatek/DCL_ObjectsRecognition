@@ -31,9 +31,9 @@ CspBlockObjectRecognize_Processor::~CspBlockObjectRecognize_Processor()
 	LOG(LTRACE) << "Good bye CspBlockObjectRecognize_Processor\n";
 }
 
-bool CspBlockObjectRecognize_Processor::onInit()
+void CspBlockObjectRecognize_Processor::prepareInterface()
 {
-	LOG(LTRACE) << "CspBlockObjectRecognize_Processor::initialize\n";
+	LOG(LTRACE) << "CspBlockObjectRecognize_Processor::prepareInterface\n";
 
 	// Register data streams, events and event handlers HERE!
 	registerStream("in_segments", &in_segments);
@@ -53,8 +53,12 @@ bool CspBlockObjectRecognize_Processor::onInit()
 		shapeRecognize->setModels(modelsFactory->loadModels());
 	} catch (exception& e) {
 		LOG(LFATAL) << "Error loading models from " << string(modelsFilename) << ": " << e.what() << "\n";
-		return false;
 	}
+}
+
+bool CspBlockObjectRecognize_Processor::onInit()
+{
+	LOG(LTRACE) << "CspBlockObjectRecognize_Processor::initialize\n";
 
 	return true;
 }

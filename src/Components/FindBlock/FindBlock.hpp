@@ -58,6 +58,8 @@ public:
 
 protected:
 
+    	void prepareInterface();
+
         /*!
     	 * Method called when component is initialized
     	 * \return true on success

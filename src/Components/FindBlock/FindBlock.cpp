@@ -30,9 +30,9 @@ FindBlock_Processor::~FindBlock_Processor()
         LOG(LTRACE) << "Good bye FindBlock_Processor\n";
 }
 
-bool FindBlock_Processor::onInit()
+void FindBlock_Processor::prepareInterface()
 {
-        LOG(LTRACE) << "FindBlock_Processor::initialize\n";
+        LOG(LTRACE) << "FindBlock_Processor::prepareInterface\n";
 
         h_onLineSegmentsEstimated.setup(this, &FindBlock_Processor::onLineSegmentsEstimated);
         registerHandler("onLineSegmentsEstimated", &h_onLineSegmentsEstimated);
@@ -44,6 +44,13 @@ bool FindBlock_Processor::onInit()
 
         blockLocated = registerEvent("blockLocated");
         blockNotFound = registerEvent("blockNotFound");
+}
+
+
+bool FindBlock_Processor::onInit()
+{
+        LOG(LTRACE) << "FindBlock_Processor::initialize\n";
+
         return true;
 }
 

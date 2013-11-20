@@ -27,9 +27,9 @@ EdgeDetectorForSegmentedImage_Processor::~EdgeDetectorForSegmentedImage_Processo
 	LOG(LTRACE) << "Good bye EdgeDetectorForSegmentedImage_Processor\n";
 }
 
-bool EdgeDetectorForSegmentedImage_Processor::onInit()
+void EdgeDetectorForSegmentedImage_Processor::prepareInterface()
 {
-	LOG(LTRACE) << "EdgeDetectorForSegmentedImage_Processor::initialize\n";
+	LOG(LTRACE) << "EdgeDetectorForSegmentedImage_Processor::prepareInterface\n";
 
 	// Register data streams, events and event handlers HERE!
 	registerStream("in_segmented", &in_segmented);
@@ -40,6 +40,11 @@ bool EdgeDetectorForSegmentedImage_Processor::onInit()
 	registerHandler("onSegmented", &h_onSegmented);
 
 	edgesDetected = registerEvent("edgesDetected");
+}
+
+bool EdgeDetectorForSegmentedImage_Processor::onInit()
+{
+	LOG(LTRACE) << "EdgeDetectorForSegmentedImage_Processor::initialize\n";
 
 	return true;
 }
