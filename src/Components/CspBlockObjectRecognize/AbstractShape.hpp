@@ -10,7 +10,8 @@
 
 #include <vector>
 #include <boost/shared_ptr.hpp>
-#include <cv.h>
+#include <opencv2/core/core.hpp>
+#include <opencv2/imgproc/imgproc.hpp>
 
 namespace Processors {
 namespace CspBlockObjectRecognize {

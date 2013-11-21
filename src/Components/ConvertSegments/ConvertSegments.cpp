@@ -19,7 +19,8 @@ using Types::Segmentation::SegmentedImage;
 using Types::Segmentation::MaskType;
 
 ConvertSegments_Processor::ConvertSegments_Processor(const std::string & name) :
-	Base::Component(name)
+	Base::Component(name),
+	showEdgeImage("showEdgeImage", 0, "combo")
 {
 	LOG(LTRACE) << "Hello ConvertSegments_Processor\n";
 
@@ -42,9 +43,10 @@ void ConvertSegments_Processor::prepareInterface()
 	registerHandler("onSegmented", &h_onSegmented);
 
 	registerStream("in_segmented", &in_segmented);
-
 	registerStream("out_img", &out_img);
-	newImage = registerEvent("newImage");
+
+	//newImage = registerEvent("newImage");
+	addDependency("onSegmented", &in_segmented);
 }
 
 bool ConvertSegments_Processor::onInit()
@@ -83,7 +85,7 @@ void ConvertSegments_Processor::onSegmented()
 	SegmentedImage si = in_segmented.read();
 
 	Mat classImage;
-	if (props.showEdgeImage) {
+	if (showEdgeImage) {
 		classImage = si.edgeImage;
 	} else {
 		classImage = si.image;
@@ -111,7 +113,7 @@ void ConvertSegments_Processor::onSegmented()
 	}
 
 	out_img.write(image);
-	newImage->raise();
+	//newImage->raise();
 }
 
 }//: namespace ConvertSegments

@@ -17,7 +17,9 @@ using namespace std;
 using Types::Segmentation::SegmentedImage;
 
 GrayImageSegmentation_Processor::GrayImageSegmentation_Processor(const std::string & name) :
-	Base::Component(name)
+	Base::Component(name),
+	minSegmentArea("minSegmentArea",0,"range"),
+	minVariance("minVariance",0,"range")
 {
 	LOG(LTRACE) << "Hello GrayImageSegmentation_Processor\n";
 }
@@ -36,12 +38,14 @@ void GrayImageSegmentation_Processor::prepareInterface()
 	registerHandler("onNewImage", &h_onNewImage);
 
 	registerStream("in_img", &in_img);
-
 	registerStream("out_segmented", &out_segmented);
-	segmented = registerEvent("segmented");
 
-	segmentExtractor.setMinSegmentArea(props.minSegmentArea);
-	segmentExtractor.setMinVariance(props.minVariance);
+	addDependency("onNewImage", &in_img);
+
+	//segmented = registerEvent("segmented");
+
+	segmentExtractor.setMinSegmentArea(minSegmentArea);
+	segmentExtractor.setMinVariance(minVariance);
 }
 
 
@@ -87,7 +91,7 @@ void GrayImageSegmentation_Processor::onNewImage()
 	LOG(LDEBUG) << "GrayImageSegmentation_Processor::onNewImage(): si.segments.size()=" << si.segments.size();
 
 	out_segmented.write(si);
-	segmented->raise();
+	//segmented->raise();
 }
 
 }//: namespace GrayImageSegmentation

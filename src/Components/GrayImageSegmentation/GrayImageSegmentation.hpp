@@ -8,13 +8,15 @@
 #ifndef GRAYIMAGESEGMENTATION_PROCESSOR_HPP_
 #define GRAYIMAGESEGMENTATION_PROCESSOR_HPP_
 
-#include <cv.h>
+#include <opencv2/core/core.hpp>
+#include <opencv2/imgproc/imgproc.hpp>
 
 #include "Component_Aux.hpp"
 #include "Component.hpp"
 #include "Panel_Empty.hpp"
 #include "DataStream.hpp"
-#include "Props.hpp"
+#include "Property.hpp"
+//#include "Props.hpp"
 
 #include "SegmentExtractor.hpp"
 
@@ -61,29 +63,31 @@ namespace GrayImageSegmentation {
 /*!
  * \brief GrayImageSegmentation properties
  */
+
+/*
 struct GrayImageSegmentation_Props: public Base::Props
 {
-	/**
+	*
 	 * Minimal segment area in pixels.
-	 */
+
 	int minSegmentArea;
-	/**
+	*
 	 * If segment variance is greater than this, segment is thresholded.
-	 */
+
 	double minVariance;
 
-	/*!
+	!
 	 * \copydoc Base::Props::load
-	 */
+
 	void load(const ptree & pt)
 	{
 		minSegmentArea = pt.get <int> ("minSegmentArea");
 		minVariance = pt.get <double> ("minVariance");
 	}
 
-	/*!
+	!
 	 * \copydoc Base::Props::save
-	 */
+
 	void save(ptree & pt)
 	{
 		pt.put("minSegmentArea", minSegmentArea);
@@ -91,6 +95,7 @@ struct GrayImageSegmentation_Props: public Base::Props
 	}
 
 };
+*/
 
 /*!
  * \class GrayImageSegmentation_Processor
@@ -112,14 +117,13 @@ public:
 	/*!
 	 * Return window properties
 	 */
-	Base::Props * getProperties()
-	{
-		return &props;
-	}
+//	Base::Props * getProperties()
+//	{
+//		return &props;
+//	}
+	void prepareInterface();
 
 protected:
-
-	void prepareInterface();
 
 	/*!
 	 * Connects source to given device.
@@ -148,7 +152,9 @@ protected:
 
 private:
 	/// Properties
-	GrayImageSegmentation_Props props;
+	//GrayImageSegmentation_Props props;
+	Base::Property<int> minSegmentArea;
+	Base::Property<double> minVariance;
 
 	/**
 	 * Process image.
@@ -169,7 +175,7 @@ private:
 	/**
 	 * Segmentation completed event.
 	 */
-	Base::Event * segmented;
+	//Base::Event * segmented;
 
 	/**
 	 * Segment extractor.

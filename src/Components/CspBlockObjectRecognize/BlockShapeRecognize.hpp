@@ -17,6 +17,8 @@
 
 #include "Types/SegmentedImage.hpp"
 
+using namespace std;
+
 namespace Processors {
 namespace CspBlockObjectRecognize {
 

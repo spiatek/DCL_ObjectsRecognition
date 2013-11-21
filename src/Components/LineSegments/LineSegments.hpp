@@ -12,7 +12,8 @@
 #include "Component.hpp"
 #include "Panel_Empty.hpp"
 #include "DataStream.hpp"
-#include "Props.hpp"
+#include "Property.hpp"
+//#include "Props.hpp"
 
 #include "Types/SegmentedImage.hpp"
 #include "Types/DrawableContainer.hpp"
@@ -132,7 +133,7 @@ private:
 	/**
 	 * Line segments estimated event.
 	 */
-	Base::Event* lineSegmentsEstimated;
+	//Base::Event* lineSegmentsEstimated;
 };
 
 }//: namespace LineSegments

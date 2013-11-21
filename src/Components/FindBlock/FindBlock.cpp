@@ -20,7 +20,10 @@ using namespace Types;
 using Types::Segmentation::SegmentedImage;
 
 FindBlock_Processor::FindBlock_Processor(const std::string & name) :
-        Base::Component(name)
+        Base::Component(name),
+        type("type", GET_FIRST, "combo"),
+        len_min("len_min", 30, "range"),
+        len_max("len_max", 300, "range")
 {
         LOG(LTRACE) << "Hello FindBlock_Processor\n";
 }
@@ -42,8 +45,10 @@ void FindBlock_Processor::prepareInterface()
         registerStream("out_points", &out_points);
         registerStream("out_lines", &out_lines);
 
-        blockLocated = registerEvent("blockLocated");
-        blockNotFound = registerEvent("blockNotFound");
+        addDependency("onLineSegmentsEstimated", &in_lineSegmentsEstimated);
+
+        //blockLocated = registerEvent("blockLocated");
+        //blockNotFound = registerEvent("blockNotFound");
 }
 
 
@@ -96,9 +101,8 @@ void FindBlock_Processor::onLineSegmentsEstimated()
 		cv::Point* pos_centr = new cv::Point(si_cols/2, si_rows/2);
 
 		//Get filtration parameters from xml file
-		size_t l_min = props.len_min;
-		size_t l_max = props.len_max;
-		string type = props.type;
+		size_t l_min = len_min;
+		size_t l_max = len_max;
 
 		//Local vectors
 		std::vector<Types::Segmentation::Segment> active_blocks;	//vector for active segments (after filtration)
@@ -192,7 +196,7 @@ void FindBlock_Processor::onLineSegmentsEstimated()
 
 			//Compute servo X, Y parameters
 			int im_x = 0, im_y = 0;
-			if(type == "average") {		//compute average
+			if(type == AVERAGE) {		//compute average
 				int sumx = 0, sumy = 0;
 				for(size_t z = 0; z < pabs_v.size(); ++z) {
 					sumx += pabs_v[z].x - pos_centr->x;
@@ -221,10 +225,11 @@ void FindBlock_Processor::onLineSegmentsEstimated()
 			out_points.write(dc);
 			out_lines.write(ol);
 
-			blockLocated->raise();
+			//TODO: problem
+			//blockLocated->raise();
 		}
 		else {
-			blockNotFound->raise();
+			//blockNotFound->raise();
 		}
 	}
 	catch (const Common::DisCODeException& e) {

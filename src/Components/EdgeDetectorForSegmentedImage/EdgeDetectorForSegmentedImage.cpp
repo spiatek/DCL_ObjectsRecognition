@@ -39,7 +39,9 @@ void EdgeDetectorForSegmentedImage_Processor::prepareInterface()
 	h_onSegmented.setup(this, &EdgeDetectorForSegmentedImage_Processor::onSegmented);
 	registerHandler("onSegmented", &h_onSegmented);
 
-	edgesDetected = registerEvent("edgesDetected");
+	addDependency("onSegmented", &in_segmented);
+
+	//edgesDetected = registerEvent("edgesDetected");
 }
 
 bool EdgeDetectorForSegmentedImage_Processor::onInit()
@@ -94,7 +96,7 @@ void EdgeDetectorForSegmentedImage_Processor::onSegmented()
 
 	out_edgesDetected.write(si);
 	out_contours.write(dc);
-	edgesDetected->raise();
+	//edgesDetected->raise();
 }
 
 }//: namespace EdgeDetectorForSegmentedImage

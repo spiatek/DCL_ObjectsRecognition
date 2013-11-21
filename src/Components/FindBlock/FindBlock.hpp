@@ -12,37 +12,58 @@
 #include "Component.hpp"
 #include "Panel_Empty.hpp"
 #include "DataStream.hpp"
-#include "Props.hpp"
+#include "Property.hpp"
 
 #include "Types/SegmentedImage.hpp"
 #include "Types/DrawableContainer.hpp"
 #include "Types/Drawable.hpp"
 #include "Types/ImagePosition.hpp"
 
+#define	GET_FIRST	1
+#define	AVERAGE		2
+
 namespace Processors {
 namespace FindBlock {
 
-struct FindBlock_Props: public Base::Props
-{
+//struct FindBlock_Props: public Base::Props
+//{
+//
+//	int len_min;
+//	int len_max;
+//	string type;
+//
+//	void load(const ptree & pt)
+//	{
+//		len_min = pt.get("len_min",30);
+//		len_max = pt.get("len_max",300);
+//		type = pt.get("type","get_first");
+//	}
+//
+//	void save(ptree & pt)
+//	{
+//		pt.put("len_min", len_min);
+//		pt.put("len_max", len_max);
+//		pt.put("type", type);
+//	}
+//
+//};
 
-	int len_min;
-	int len_max;
-	string type;
-
-	void load(const ptree & pt)
+class FindBlockTranslator {
+public:
+	static int fromStr(const std::string & s)
 	{
-		len_min = pt.get("len_min",30);
-		len_max = pt.get("len_max",300);
-		type = pt.get("type","get_first");
+		if(s == "GET_FIRST") 	return GET_FIRST;
+		if(s == "AVERAGE") 		return AVERAGE;
+								return AVERAGE;
 	}
-
-	void save(ptree & pt)
+	static std::string toStr(int t)
 	{
-		pt.put("len_min", len_min);
-		pt.put("len_max", len_max);
-		pt.put("type", type);
+		switch(t) {
+			case GET_FIRST :	return "GET_FIRST";
+			case AVERAGE :		return "AVERAGE";
+			default :			return "GET_FIRST";
+		}
 	}
-
 };
 
 class FindBlock_Processor: public Base::Component
@@ -51,10 +72,10 @@ public:
         FindBlock_Processor(const std::string & name = "");
         virtual ~FindBlock_Processor();
 
-    	Base::Props * getProperties()
-    	{
-    		return &props;
-    	}
+//    	Base::Props * getProperties()
+//    	{
+//    		return &props;
+//    	}
 
 protected:
 
@@ -105,12 +126,15 @@ private:
         Base::DataStreamOut <Types::DrawableContainer> out_lines;
 
         /** Raised when block has been located on the image. */
-        Base::Event* blockLocated;
+        //Base::Event* blockLocated;
 
         /** Raised when block has not been found on the image. */
-        Base::Event* blockNotFound;
+        //Base::Event* blockNotFound;
 
-    	FindBlock_Props props;
+    	//FindBlock_Props props;
+        Base::Property<int, FindBlockTranslator> type;
+        Base::Property<int> len_min;
+        Base::Property<int> len_max;
 };
 }
 }

@@ -38,7 +38,10 @@ void LineSegments_Processor::prepareInterface()
 	registerStream("in_edgesDetected", &in_edgesDetected);
 	registerStream("out_lineSegmentsEstimated", &out_lineSegmentsEstimated);
 	registerStream("out_lineSegments", &out_lineSegments);
-	lineSegmentsEstimated = registerEvent("lineSegmentsEstimated");
+
+	addDependency("onEdgesDetected", &in_edgesDetected);
+
+	//lineSegmentsEstimated = registerEvent("lineSegmentsEstimated");
 }
 
 bool LineSegments_Processor::onInit()
@@ -88,7 +91,7 @@ void LineSegments_Processor::onEdgesDetected()
 
 	out_lineSegmentsEstimated.write(si);
 	out_lineSegments.write(dc);
-	lineSegmentsEstimated->raise();
+	//lineSegmentsEstimated->raise();
 }
 
 }//: namespace LineSegments

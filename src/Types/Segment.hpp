@@ -14,7 +14,8 @@
 #define GREEN	3
 #define YELLOW	4
 
-#include <cv.h>
+#include <opencv2/core/core.hpp>
+#include <opencv2/imgproc/imgproc.hpp>
 
 #include "Types/Line.hpp"
 

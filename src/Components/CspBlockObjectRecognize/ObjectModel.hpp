@@ -10,7 +10,8 @@
 
 #include <boost/shared_ptr.hpp>
 #include <boost/property_tree/ptree.hpp>
-#include <cv.h>
+#include <opencv2/core/core.hpp>
+#include <opencv2/imgproc/imgproc.hpp>
 
 #include "Types/SegmentedImage.hpp"
 #include "CspGraph.hpp"

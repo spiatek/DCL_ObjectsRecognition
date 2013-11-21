@@ -40,7 +40,9 @@ void CspObjectRecognize_Processor::prepareInterface()
 	registerHandler("onSegmentedImage", &h_onSegmentedImage);
 
 	registerStream("out_recognizedDrawableContainer", &out_recognizedDrawableContainer);
-	recognized = registerEvent("recognized");
+	//recognized = registerEvent("recognized");
+
+	addDependency("onSegmentedImage", &in_segmentedImage);
 
 	//read models database
 	try {
@@ -100,7 +102,7 @@ void CspObjectRecognize_Processor::onSegmentedImage()
 			dc.add(inst->clone());
 		}
 		out_recognizedDrawableContainer.write(dc);
-		recognized->raise();
+		//recognized->raise();
 
 	} catch (exception& e) {
 		LOG(LFATAL) << "CspObjectRecognize_Processor::onSegmentedImage(): exception: " << e.what();

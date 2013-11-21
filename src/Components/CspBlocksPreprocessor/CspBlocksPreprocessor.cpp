@@ -59,7 +59,13 @@ void CspBlocksPreprocessor_Processor::prepareInterface()
 	registerHandler("onLineYellowSegmentsEstimated", &h_onLineYellowSegmentsEstimated);
 	registerHandler("onLinesEstimated", &h_onLinesEstimated);
 
-	cspBlocksReady = registerEvent("cspBlocksReady");
+	//cspBlocksReady = registerEvent("cspBlocksReady");
+
+	addDependency("onLineBlueSegmentsEstimated", &in_blueSegments);
+	addDependency("onLineRedSegmentsEstimated", &in_redSegments);
+	addDependency("onLineGreenSegmentsEstimated", &in_greenSegments);
+	addDependency("onLineYellowSegmentsEstimated", &in_yellowSegments);
+	addDependency("onLinesEstimated", &in_linesVector);
 
 	isBlue = false;
 	isRed = false;
@@ -265,7 +271,7 @@ bool CspBlocksPreprocessor_Processor::onStep()
 	out_nearestSegments.write(nearestSegments);
 	out_contours.write(dc1);
 
-	cspBlocksReady->raise();
+	//cspBlocksReady->raise();
 
 	lock = false;
 	return true;

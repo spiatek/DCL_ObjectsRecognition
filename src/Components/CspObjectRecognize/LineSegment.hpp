@@ -8,7 +8,8 @@
 #ifndef LINESEGMENT_HPP_
 #define LINESEGMENT_HPP_
 
-#include <cv.h>
+#include <opencv2/core/core.hpp>
+#include <opencv2/imgproc/imgproc.hpp>
 
 #include "AbstractShape.hpp"
 #include "Types/Line.hpp"

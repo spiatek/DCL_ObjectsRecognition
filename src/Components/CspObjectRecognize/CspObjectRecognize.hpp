@@ -175,7 +175,7 @@ private:
 	/**
 	 * Objects recognized event.
 	 */
-	Base::Event* recognized;
+	//Base::Event* recognized;
 
 	/**
 	 * Shape recognize object.

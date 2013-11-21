@@ -44,7 +44,11 @@ void CspBlockObjectRecognize_Processor::prepareInterface()
 	registerHandler("onNewImage", &h_onNewImage);
 
 	registerStream("out_recognizedDrawableContainer", &out_recognizedDrawableContainer);
-	recognized = registerEvent("recognized");
+	//recognized = registerEvent("recognized");
+
+	addDependency("onNewImage", &in_segments);
+	addDependency("onNewImage", &in_lines);
+	addDependency("onNewImage", &in_nearestSegments);
 
 	//read models database
 	try {
@@ -118,7 +122,7 @@ void CspBlockObjectRecognize_Processor::onNewImage()
 			dc.add(inst->clone());
 		}
 		out_recognizedDrawableContainer.write(dc);
-		recognized->raise();
+		//recognized->raise();
 
 	} catch (exception& e) {
 		LOG(LFATAL) << "CspBlockObjectRecognize_Processor::onNewImage(): exception: " << e.what();

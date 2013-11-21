@@ -9,7 +9,8 @@
 #define ABSTRACTCONSTRAINT_HPP_
 
 #include <boost/shared_ptr.hpp>
-#include <cv.h>
+#include <opencv2/core/core.hpp>
+#include <opencv2/imgproc/imgproc.hpp>
 
 #include "AbstractShape.hpp"
 

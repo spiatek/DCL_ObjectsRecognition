@@ -12,7 +12,6 @@
 #include "Component.hpp"
 #include "Panel_Empty.hpp"
 #include "DataStream.hpp"
-#include "Props.hpp"
 
 #include "Types/DrawableContainer.hpp"
 #include "Types/Contour.hpp"
@@ -118,7 +117,7 @@ private:
 		/**
 	 * Edges detected event.
 	 */
-	Base::Event* cspBlocksReady;
+	//Base::Event* cspBlocksReady;
 };
 
 }//: namespace CspBlocksPreprocessor

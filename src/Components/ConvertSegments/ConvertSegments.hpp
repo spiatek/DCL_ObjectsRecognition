@@ -8,7 +8,10 @@
 #ifndef CONVERTSEGMENTS_PROCESSOR_HPP_
 #define CONVERTSEGMENTS_PROCESSOR_HPP_
 
-#include <cv.h>
+#include <opencv2/core/core.hpp>
+#include <opencv2/imgproc/imgproc.hpp>
+
+#include <boost/property_tree/ptree.hpp>
 
 #include "Component_Aux.hpp"
 #include "Component.hpp"
@@ -64,29 +67,29 @@ namespace ConvertSegments {
 /*!
  * \brief ConvertSegments properties
  */
-struct ConvertSegments_Props: public Base::Props
-{
-	/**
-	 * If false, show whole segments. Show edges otherwise.
-	 */
-	bool showEdgeImage;
-	/*!
-	 * \copydoc Base::Props::load
-	 */
-	void load(const ptree & pt)
-	{
-		showEdgeImage = pt.get <bool> ("showEdgeImage");
-	}
-
-	/*!
-	 * \copydoc Base::Props::save
-	 */
-	void save(ptree & pt)
-	{
-		pt.put <bool> ("showEdgeImage", showEdgeImage);
-	}
-
-};
+//struct ConvertSegments_Props: public Base::Props
+//{
+//	/**
+//	 * If false, show whole segments. Show edges otherwise.
+//	 */
+//	bool showEdgeImage;
+//	/*!
+//	 * \copydoc Base::Props::load
+//	 */
+//	void load(const ptree & pt)
+//	{
+//		showEdgeImage = pt.get <bool> ("showEdgeImage");
+//	}
+//
+//	/*!
+//	 * \copydoc Base::Props::save
+//	 */
+//	void save(ptree & pt)
+//	{
+//		pt.put <bool> ("showEdgeImage", showEdgeImage);
+//	}
+//
+//};
 
 /*!
  * \class ConvertSegments_Processor
@@ -108,10 +111,10 @@ public:
 	/*!
 	 * Return window properties
 	 */
-	Base::Props * getProperties()
-	{
-		return &props;
-	}
+//	Base::Props * getProperties()
+//	{
+//		return &props;
+//	}
 
 protected:
 
@@ -142,8 +145,6 @@ protected:
 	 */
 	bool onStop();
 
-	/// Properties
-	ConvertSegments_Props props;
 private:
 	/**
 	 * Process segmented image and write to out_img.
@@ -168,7 +169,11 @@ private:
 	/**
 	 * New image ready.
 	 */
-	Base::Event* newImage;
+	//Base::Event* newImage;
+
+	/// Properties
+	//ConvertSegments_Props props;
+	Base::Property<int> showEdgeImage;
 
 	/**
 	 * Number of different segments' colors.
