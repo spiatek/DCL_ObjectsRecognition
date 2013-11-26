@@ -9,7 +9,7 @@ ADD_COMPONENT(GrayImageSegmentation)
 
 ADD_COMPONENT(LineSegments)
 
-ADD_COMPONENT(FindBlock)
+ADD_COMPONENT(FindBlock2)
 
 ADD_COMPONENT(CspBlocksPreprocessor)
 

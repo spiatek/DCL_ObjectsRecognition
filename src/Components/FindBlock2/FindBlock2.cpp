@@ -1,5 +1,5 @@
 /*
- * FindBlock.cpp
+ * FindBlock2.cpp
  *
  *  Created on: 22-10-2011
  *      Author: spiatek
@@ -8,43 +8,44 @@
 #include <memory>
 #include <string>
 
-#include "FindBlock.hpp"
+#include <boost/bind.hpp>
+
+#include "FindBlock2.hpp"
 #include "Common/Logger.hpp"
 
 size_t line_length(Types::Line*);
 
 namespace Processors {
-namespace FindBlock {
+namespace FindBlock2 {
 
 using namespace Types;
 using Types::Segmentation::SegmentedImage;
 
-FindBlock_Processor::FindBlock_Processor(const std::string & name) :
+FindBlock2_Processor::FindBlock2_Processor(const std::string & name) :
         Base::Component(name),
-        type("type", GET_FIRST, "combo"),
+        type("type", NEAREST, "combo"),
         len_min("len_min", 30, "range"),
         len_max("len_max", 300, "range")
 {
-        LOG(LTRACE) << "Hello FindBlock_Processor\n";
+        LOG(LTRACE) << "Hello FindBlock2_Processor\n";
 }
 
-FindBlock_Processor::~FindBlock_Processor()
+FindBlock2_Processor::~FindBlock2_Processor()
 {
-        LOG(LTRACE) << "Good bye FindBlock_Processor\n";
+        LOG(LTRACE) << "Good bye FindBlock2_Processor\n";
 }
 
-void FindBlock_Processor::prepareInterface()
+void FindBlock2_Processor::prepareInterface()
 {
-        LOG(LTRACE) << "FindBlock_Processor::prepareInterface\n";
-
-        h_onLineSegmentsEstimated.setup(this, &FindBlock_Processor::onLineSegmentsEstimated);
-        registerHandler("onLineSegmentsEstimated", &h_onLineSegmentsEstimated);
+        LOG(LTRACE) << "FindBlock2_Processor::prepareInterface\n";
 
         registerStream("in_lineSegmentsEstimated", &in_lineSegmentsEstimated);
         registerStream("out_imagePosition", &out_imagePosition);
         registerStream("out_points", &out_points);
         registerStream("out_lines", &out_lines);
 
+        h_onLineSegmentsEstimated.setup(boost::bind(&FindBlock2_Processor::onLineSegmentsEstimated, this));
+        registerHandler("onLineSegmentsEstimated", &h_onLineSegmentsEstimated);
         addDependency("onLineSegmentsEstimated", &in_lineSegmentsEstimated);
 
         //blockLocated = registerEvent("blockLocated");
@@ -52,39 +53,39 @@ void FindBlock_Processor::prepareInterface()
 }
 
 
-bool FindBlock_Processor::onInit()
+bool FindBlock2_Processor::onInit()
 {
-        LOG(LTRACE) << "FindBlock_Processor::initialize\n";
+        LOG(LTRACE) << "FindBlock2_Processor::initialize\n";
 
         return true;
 }
 
-bool FindBlock_Processor::onFinish()
+bool FindBlock2_Processor::onFinish()
 {
-        LOG(LTRACE) << "FindBlock_Processor::finish\n";
+        LOG(LTRACE) << "FindBlock2_Processor::finish\n";
 
         return true;
 }
 
-bool FindBlock_Processor::onStep()
+bool FindBlock2_Processor::onStep()
 {
-        LOG(LTRACE) << "FindBlock_Processor::step\n";
+        LOG(LTRACE) << "FindBlock2_Processor::step\n";
         return true;
 }
 
-bool FindBlock_Processor::onStop()
-{
-        return true;
-}
-
-bool FindBlock_Processor::onStart()
+bool FindBlock2_Processor::onStop()
 {
         return true;
 }
 
-void FindBlock_Processor::onLineSegmentsEstimated()
+bool FindBlock2_Processor::onStart()
 {
-	LOG(LTRACE) << "FindBlock_Processor::onLineSegmentsEstimated()\n";
+        return true;
+}
+
+void FindBlock2_Processor::onLineSegmentsEstimated()
+{
+	LOG(LTRACE) << "FindBlock2_Processor::onLineSegmentsEstimated()\n";
 
 	try {
 
@@ -235,7 +236,7 @@ void FindBlock_Processor::onLineSegmentsEstimated()
 	catch (const Common::DisCODeException& e) {
 		LOG(LERROR) << e.what() << "\n";
 	}
-	LOG(LTRACE) << "void FindBlock_Processor::onLineSegmentsEstimated() end\n";}
+	LOG(LTRACE) << "void FindBlock2_Processor::onLineSegmentsEstimated() end\n";}
 
 }
 }

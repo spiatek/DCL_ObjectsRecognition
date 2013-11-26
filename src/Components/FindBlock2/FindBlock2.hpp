@@ -1,81 +1,54 @@
 /*
- * FindBlock.hpp
+ * FindBlock2.hpp
  *
  *  Created on: 22-10-2011
  *      Author: spiatek
  */
 
-#ifndef FINDBLOCK_PROCESSOR_HPP_
-#define FINDBLOCK_PROCESSOR_HPP_
+#ifndef FINDBLOCK2_PROCESSOR_HPP_
+#define FINDBLOCK2_PROCESSOR_HPP_
 
 #include "Component_Aux.hpp"
 #include "Component.hpp"
 #include "Panel_Empty.hpp"
 #include "DataStream.hpp"
 #include "Property.hpp"
+#include "EventHandler2.hpp"
 
 #include "Types/SegmentedImage.hpp"
 #include "Types/DrawableContainer.hpp"
 #include "Types/Drawable.hpp"
 #include "Types/ImagePosition.hpp"
 
-#define	GET_FIRST	1
-#define	AVERAGE		2
+#define	AVERAGE	1
+#define	NEAREST	2
 
 namespace Processors {
-namespace FindBlock {
+namespace FindBlock2 {
 
-//struct FindBlock_Props: public Base::Props
-//{
-//
-//	int len_min;
-//	int len_max;
-//	string type;
-//
-//	void load(const ptree & pt)
-//	{
-//		len_min = pt.get("len_min",30);
-//		len_max = pt.get("len_max",300);
-//		type = pt.get("type","get_first");
-//	}
-//
-//	void save(ptree & pt)
-//	{
-//		pt.put("len_min", len_min);
-//		pt.put("len_max", len_max);
-//		pt.put("type", type);
-//	}
-//
-//};
-
-class FindBlockTranslator {
+class FindBlock2Translator {
 public:
 	static int fromStr(const std::string & s)
 	{
-		if(s == "GET_FIRST") 	return GET_FIRST;
+		if(s == "NEAREST") 		return NEAREST;
 		if(s == "AVERAGE") 		return AVERAGE;
 								return AVERAGE;
 	}
 	static std::string toStr(int t)
 	{
 		switch(t) {
-			case GET_FIRST :	return "GET_FIRST";
+			case NEAREST :		return "NEAREST";
 			case AVERAGE :		return "AVERAGE";
-			default :			return "GET_FIRST";
+			default :			return "NEAREST";
 		}
 	}
 };
 
-class FindBlock_Processor: public Base::Component
+class FindBlock2_Processor: public Base::Component
 {
 public:
-        FindBlock_Processor(const std::string & name = "");
-        virtual ~FindBlock_Processor();
-
-//    	Base::Props * getProperties()
-//    	{
-//    		return &props;
-//    	}
+        FindBlock2_Processor(const std::string & name = "");
+        virtual ~FindBlock2_Processor();
 
 protected:
 
@@ -114,9 +87,6 @@ protected:
 private:       
 		void onLineSegmentsEstimated();
 
-		/** New image event handler. */
-		Base::EventHandler <FindBlock_Processor> h_onLineSegmentsEstimated;
-
 		/** Image stream. */
 		Base::DataStreamIn <Types::Segmentation::SegmentedImage> in_lineSegmentsEstimated;
 
@@ -125,14 +95,11 @@ private:
         Base::DataStreamOut <Types::DrawableContainer> out_points;
         Base::DataStreamOut <Types::DrawableContainer> out_lines;
 
-        /** Raised when block has been located on the image. */
-        //Base::Event* blockLocated;
+        /** New image event handler. */
+  		Base::EventHandler2 h_onLineSegmentsEstimated;
 
-        /** Raised when block has not been found on the image. */
-        //Base::Event* blockNotFound;
-
-    	//FindBlock_Props props;
-        Base::Property<int, FindBlockTranslator> type;
+    	//FindBlock2_Props props;
+        Base::Property<int, FindBlock2Translator> type;
         Base::Property<int> len_min;
         Base::Property<int> len_max;
 };
@@ -142,6 +109,6 @@ private:
 /*
  * Register processor component.
  */
-REGISTER_PROCESSOR_COMPONENT("FindBlock", Processors::FindBlock::FindBlock_Processor, Common::Panel_Empty)
+REGISTER_PROCESSOR_COMPONENT("FindBlock2", Processors::FindBlock2::FindBlock2_Processor, Common::Panel_Empty)
 
-#endif /* FINDBLOCK_PROCESSOR_HPP_ */
+#endif /* FINDBLOCK2_PROCESSOR_HPP_ */
