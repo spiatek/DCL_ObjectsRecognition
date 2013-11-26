@@ -11,7 +11,6 @@
 #include <boost/shared_ptr.hpp>
 #include "Component_Aux.hpp"
 #include "Component.hpp"
-#include "Panel_Empty.hpp"
 #include "DataStream.hpp"
 #include "Property.hpp"
 #include "Types/SegmentedImage.hpp"
@@ -40,9 +39,9 @@ public:
 	 */
 	virtual ~CspBlockObjectRecognize_Processor();
 
-protected:
-
 	void prepareInterface();
+
+protected:
 
 	/*
 	 * Connects source to given device.
@@ -122,6 +121,6 @@ private:
 /*
  * Register processor component.
  */
-REGISTER_PROCESSOR_COMPONENT("CspBlockObjectRecognize", Processors::CspBlockObjectRecognize::CspBlockObjectRecognize_Processor, Common::Panel_Empty)
+REGISTER_COMPONENT("CspBlockObjectRecognize", Processors::CspBlockObjectRecognize::CspBlockObjectRecognize_Processor)
 
 #endif /* CSPBLOCKOBJECTRECOGNIZE_PROCESSOR_HPP_ */

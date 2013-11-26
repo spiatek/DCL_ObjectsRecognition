@@ -13,7 +13,6 @@
 
 #include "Component_Aux.hpp"
 #include "Component.hpp"
-#include "Panel_Empty.hpp"
 #include "DataStream.hpp"
 #include "Property.hpp"
 //#include "Props.hpp"
@@ -190,6 +189,6 @@ private:
 /*
  * Register processor component.
  */
-REGISTER_PROCESSOR_COMPONENT("GrayImageSegmentation", Processors::GrayImageSegmentation::GrayImageSegmentation_Processor, Common::Panel_Empty)
+REGISTER_COMPONENT("GrayImageSegmentation", Processors::GrayImageSegmentation::GrayImageSegmentation_Processor)
 
 #endif /* GRAYIMAGESEGMENTATION_PROCESSOR_HPP_ */

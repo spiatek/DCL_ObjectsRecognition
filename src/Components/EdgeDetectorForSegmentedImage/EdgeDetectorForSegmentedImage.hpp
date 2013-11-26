@@ -10,12 +10,10 @@
 
 #include "Component_Aux.hpp"
 #include "Component.hpp"
-#include "Panel_Empty.hpp"
 #include "DataStream.hpp"
 
 #include "Types/DrawableContainer.hpp"
 #include "Types/Contour.hpp"
-
 #include "Types/SegmentedImage.hpp"
 
 
@@ -75,9 +73,9 @@ public:
 	 */
 	virtual ~EdgeDetectorForSegmentedImage_Processor();
 
-protected:
-
 	void prepareInterface();
+
+protected:
 
 	/*!
 	 * Connects source to given device.
@@ -143,6 +141,6 @@ private:
 /*
  * Register processor component.
  */
-REGISTER_PROCESSOR_COMPONENT("EdgeDetectorForSegmentedImage", Processors::EdgeDetectorForSegmentedImage::EdgeDetectorForSegmentedImage_Processor, Common::Panel_Empty)
+REGISTER_COMPONENT("EdgeDetectorForSegmentedImage", Processors::EdgeDetectorForSegmentedImage::EdgeDetectorForSegmentedImage_Processor)
 
 #endif /* EDGEDETECTORFORSEGMENTEDIMAGE_PROCESSOR_HPP_ */

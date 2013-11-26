@@ -10,7 +10,6 @@
 
 #include "Component_Aux.hpp"
 #include "Component.hpp"
-#include "Panel_Empty.hpp"
 #include "DataStream.hpp"
 #include "Property.hpp"
 #include "EventHandler2.hpp"
@@ -49,10 +48,9 @@ class FindBlock2_Processor: public Base::Component
 public:
         FindBlock2_Processor(const std::string & name = "");
         virtual ~FindBlock2_Processor();
+    	void prepareInterface();
 
 protected:
-
-    	void prepareInterface();
 
         /*!
     	 * Method called when component is initialized
@@ -109,6 +107,6 @@ private:
 /*
  * Register processor component.
  */
-REGISTER_PROCESSOR_COMPONENT("FindBlock2", Processors::FindBlock2::FindBlock2_Processor, Common::Panel_Empty)
+REGISTER_COMPONENT("FindBlock2", Processors::FindBlock2::FindBlock2_Processor)
 
 #endif /* FINDBLOCK2_PROCESSOR_HPP_ */

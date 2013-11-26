@@ -10,10 +10,8 @@
 
 #include "Component_Aux.hpp"
 #include "Component.hpp"
-#include "Panel_Empty.hpp"
 #include "DataStream.hpp"
 #include "Property.hpp"
-//#include "Props.hpp"
 
 #include "Types/SegmentedImage.hpp"
 #include "Types/DrawableContainer.hpp"
@@ -143,6 +141,6 @@ private:
 /*
  * Register processor component.
  */
-REGISTER_PROCESSOR_COMPONENT("LineSegments", Processors::LineSegments::LineSegments_Processor, Common::Panel_Empty)
+REGISTER_COMPONENT("LineSegments", Processors::LineSegments::LineSegments_Processor)
 
 #endif /* LINESEGMENTS_PROCESSOR_HPP_ */
