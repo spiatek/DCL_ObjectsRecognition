@@ -22,6 +22,9 @@ GrayImageSegmentation_Processor::GrayImageSegmentation_Processor(const std::stri
 	minVariance("minVariance",0,"range")
 {
 	LOG(LTRACE) << "Hello GrayImageSegmentation_Processor\n";
+
+	registerProperty(minSegmentArea);
+	registerProperty(minVariance);
 }
 
 GrayImageSegmentation_Processor::~GrayImageSegmentation_Processor()
