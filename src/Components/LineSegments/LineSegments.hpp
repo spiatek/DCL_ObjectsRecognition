@@ -12,6 +12,7 @@
 #include "Component.hpp"
 #include "DataStream.hpp"
 #include "Property.hpp"
+#include "EventHandler2.hpp"
 
 #include "Types/SegmentedImage.hpp"
 #include "Types/DrawableContainer.hpp"
@@ -111,7 +112,7 @@ private:
 	/**
 	 * Event handler.
 	 */
-	Base::EventHandler <LineSegments_Processor> h_onEdgesDetected;
+	Base::EventHandler2 h_onEdgesDetected;
 
 	/**
 	 * Segmented image input data stream.

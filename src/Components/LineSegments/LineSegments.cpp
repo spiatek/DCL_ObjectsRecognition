@@ -6,6 +6,8 @@
 #include <memory>
 #include <string>
 
+#include <boost/bind.hpp>
+
 #include "LineSegments.hpp"
 #include "Common/Logger.hpp"
 
@@ -32,12 +34,12 @@ void LineSegments_Processor::prepareInterface()
 
 	// Register data streams, events and event handlers HERE!
 
-	h_onEdgesDetected.setup(this, &LineSegments_Processor::onEdgesDetected);
-	registerHandler("onEdgesDetected", &h_onEdgesDetected);
-
 	registerStream("in_edgesDetected", &in_edgesDetected);
 	registerStream("out_lineSegmentsEstimated", &out_lineSegmentsEstimated);
 	registerStream("out_lineSegments", &out_lineSegments);
+
+	h_onEdgesDetected.setup(boost::bind(&LineSegments_Processor::onEdgesDetected, this));
+	registerHandler("onEdgesDetected", &h_onEdgesDetected);
 
 	addDependency("onEdgesDetected", &in_edgesDetected);
 
@@ -81,6 +83,7 @@ void LineSegments_Processor::onEdgesDetected()
 
 	DrawableContainer dc;
 	for (size_t i = 0; i < si.segments.size(); ++i) {
+		LOG(LTRACE) << "LineSegments_Processor::onEdgesDetected()::process_next_segment\n";
 		std::vector <Types::Line>* lines = si.segments[i].getLineSegments();
 		for (size_t j = 0; j < lines->size(); ++j) {
 			Line* line = new Line((*lines)[j]);
@@ -88,6 +91,8 @@ void LineSegments_Processor::onEdgesDetected()
 			LOG(LTRACE) << "LineSegments_Processor::onEdgesDetected(): adding line segment\n";
 		}
 	}
+
+	LOG(LTRACE) << "LineSegments_Processor::onEdgesDetected()::beforeFillStructures\n";
 
 	out_lineSegmentsEstimated.write(si);
 	out_lineSegments.write(dc);

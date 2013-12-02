@@ -49,7 +49,7 @@ public:
 */
 	virtual Line * clone()
 	{	Line * ret = new Line(*this);
-		//ret->setCol(CV_RGB(255,0,0));
+		ret->setCol(CV_RGB(255,0,0));
 		return ret;
 	}
 
@@ -66,7 +66,7 @@ public:
 		return fabs(A * p.x + B * p.y + C) / sqrt(A * A + B * B);
 	}
 
-	void setColor(int c)
+/*	void setColor(int c)
 	{
 		color = c;
 	}
@@ -75,7 +75,7 @@ public:
 	{
 		return color;
 	}
-
+*/
 	cv::Point getCenter()
 	{
 		cv::Point pc;
@@ -129,7 +129,7 @@ private:
 
 	bool lineEquationComputed;
 	double A, B, C;
-	int color;
+	//int color;
 	//CvScalar m_col;
 };
 

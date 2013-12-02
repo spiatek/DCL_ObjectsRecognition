@@ -40,7 +40,7 @@ Segment::Segment(const Segment& o)
 	contours = o.contours;
 	lineSegmentsComputed = o.lineSegmentsComputed;
 	lineSegments = o.lineSegments;
-	segmentColor = o.segmentColor;
+	//segmentColor = o.segmentColor;
 }
 
 Segment::~Segment()
@@ -51,7 +51,7 @@ cv::Point Segment::getStartingPoint() const
 {
 	return startingPoint;
 }
-
+/*
 cv::Point Segment::getSegmentCenter() const
 {
 	size_t j;
@@ -75,7 +75,7 @@ cv::Point Segment::getSegmentCenter() const
 	center.y = y;
 
 	return center;
-}
+}*/
 
 MaskType Segment::getSegmentClass() const
 {
@@ -109,7 +109,7 @@ void Segment::setSegmentImageFromSegmentedImage(cv::Mat& segmentedImage)
 
 	segmentImageSet = true;
 }
-
+/*
 void Segment::setSegmentColor(int sCol)
 {
 	segmentColor = sCol;
@@ -118,7 +118,7 @@ void Segment::setSegmentColor(int sCol)
 int Segment::getSegmentColor()
 {
 	return segmentColor;
-}
+}*/
 
 void Segment::computeContours()
 {
@@ -174,12 +174,18 @@ void Segment::computeLineSegmentsForSingleContour(std::vector <std::vector <cv::
 			maxDistancePointIdx = i;
 		}
 	}
+
 	if (maxDistance > splitDistance) {
+		LOG(LDEBUG) << "Segment::computeLineSegmentsForSingleContour 1111 " << p1Idx << ", " << p2Idx << "\n";
 		computeLineSegmentsForSingleContour(contourIt, p1Idx, maxDistancePointIdx);
 		computeLineSegmentsForSingleContour(contourIt, maxDistancePointIdx, p2Idx);
 	} else {
+		LOG(LDEBUG) << "Segment::computeLineSegmentsForSingleContour 2222 " << p1Idx << ", " << p2Idx << "\n";
 		lineSegments.push_back(line);
+		LOG(LDEBUG) << "Segment::computeLineSegmentsForSingleContour AFTER  PUSH BACK " << p1Idx << ", " << p2Idx << "\n";
 	}
+
+	LOG(LDEBUG) << "Segment::computeLineSegmentsForSingleContour::onExit " << p1Idx << ", " << p2Idx << "\n";
 }
 
 std::vector <Types::Line>* Segment::getLineSegments()
